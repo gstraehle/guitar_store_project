@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   root 'products#index'
   resources :products
 
+  get 'orders/:id/checkout', to: 'orders#checkout'
+
 end
