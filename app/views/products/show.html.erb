@@ -27,12 +27,34 @@
 </ul>
 
 <form id='add-to-cart'>
-  <input type='button' value='Add to cart' id='add_to_cart_button'>
+  <input type='button' value='Add to cart' class='add_to_cart_button'>
 </form>
+<div class="box">
+    <input id="quantity" value="1" />
+    <button id="down" onclick="modify_qty(-1)">-1</button>
+    <button id="up" onclick="modify_qty(1)">+1</button>
+</div>
 <script>
   $(document).ready(function(){
-    $('#add-to-cart').on('click', '#add_to_cart_button', function(){
-      alert('cart button working');
+    $('#add-to-cart').on('click', '.add_to_cart_button', function(){
+      var user_id = <%= current_user.id %>;
+      var product_id = <%= @product.id %>;
+      var cart_quantity = $("input[id$='quantity']").val();
+      alert('user id ' + user_id + ', product id ' + product_id + ', cart quantity ' + cart_quantity);
     });
   });
+
 </script>
+<script>
+function modify_qty(val) {
+  var qty = document.getElementById('quantity').value;
+  var new_qty = parseInt(qty,10) + val;
+  if (new_qty < 1) {
+    new_qty = 1;
+  }
+  document.getElementById('quantity').value = new_qty;
+  return new_qty;
+}
+</script>
+
+
