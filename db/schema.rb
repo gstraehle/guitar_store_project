@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20140609140546) do
     t.text     "description"
     t.integer  "quantity"
     t.decimal  "price",           precision: 10, scale: 2
-    t.decimal  "MSRP",            precision: 10, scale: 2
+    t.decimal  "msrp",            precision: 10, scale: 2
     t.text     "category"
     t.text     "image"
     t.text     "alt_image_1"
