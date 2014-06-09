@@ -1,4 +1,29 @@
 <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+<br>
+<h2>Brand: <%=@product.brand %></h2>
+<h3>Model: <%=@product.model %></h3>
+<h3>Rating: <%=@product.avg_rating %></h3>
+<form id='add-to-cart'>
+  <input type='button' value='Add to cart'>
+</form>
+<%= image_tag(@product.image) %>
+<%= image_tag(@product.alt_image_1) %>
+<%= image_tag(@product.alt_image_2) %>
+<%= image_tag(@product.alt_image_3) %>
+
+<h3>MSRP: <%=@product.msrp %></h3>
+<h1>Our price: <%=@product.price %></h1>
+
+<ul>
+  <li>Orientation: <%=@product.orientation %></li>
+  <li>Series: <%=@product.series %></li>
+  <li>Year: <%=@product.year %></li>
+  <li>Bridge: <%=@product.bridge_type %></li>
+  <li>Frets: <%=@product.number_of_frets %></li>
+  <li>Neck: <%=@product.neck_type %></li>
+  <li>Neck Wood:<%=@product.neck_wood %></li>
+  <li>Body Wood: <%=@product.body_wood %></li>
+  <li>Case: <%=@product.case_type %></li>
+  <li>Description: <%=@product.description %></li>
+</ul>
