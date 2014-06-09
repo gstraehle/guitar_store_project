@@ -1,6 +1,12 @@
+puts('Clearing users')
+User.delete_all
+
 puts('Creating users')
 joe = User.create!(email: "joe@example.com", password: 'password')
 fig = User.create!(email: "fig@example.com", password: 'password')
+
+puts('Clearing orders and carts')
+Order.delete_all
 
 puts('Creating orders')
 Order.create(user_id: 2, processed_at: "2014-06-09 16:32:16", created_at: "2014-06-09 16:29:16", updated_at: "2014-06-09 16:32:16")
@@ -10,11 +16,17 @@ puts('Creating carts')
 Order.create(user_id: 2, processed_at: nil, created_at: "2014-06-09 15:54:36", updated_at: "2014-06-09 15:54:36")
 Order.create(user_id: 1, processed_at: nil, created_at: "2014-06-09 15:57:40", updated_at: "2014-06-09 15:57:40")
 
+puts('Clearing order products')
+OrderProduct.delete_all
+
 puts('Creating order products')
 OrderProduct.create(order_id: 1, product_id: 1, quantity: 1, unit_price: 2999.0, created_at: "2014-05-09 18:10:37", updated_at: "2014-05-09 18:10:37")
 OrderProduct.create(order_id: 1, product_id: 2, quantity: 1, unit_price: 2615.0, created_at: "2014-05-09 18:10:38", updated_at: "2014-05-09 18:10:38")
 OrderProduct.create(order_id: 2, product_id: 3, quantity: 1, unit_price: 749.0, created_at: "2014-05-09 18:10:37", updated_at: "2014-05-09 18:10:37")
 OrderProduct.create(order_id: 2, product_id: 4, quantity: 1, unit_price: 679.0, created_at: "2014-05-09 18:10:38", updated_at: "2014-05-09 18:10:38")
+
+puts('Clearing products')
+Product.delete_all
 
 puts('Creating products')
 Product.create(quantity: 5, avg_rating: 4, brand: 'Martin',alt_image_1: 'http://www.casamarilla.cl/productos/HD35.jpg' , alt_image_2: 'http://www.martinguitar.com/media/k2/attachments/HD-35_f.jpg' , alt_image_3: 'http://www.christies.com/lotfinderimages/D53567/cf_martin_and_company_a_guitar_style_hd-35sjc_nazareth_pa_2002_d5356726h.jpg' , category: 'Acoustic' , description: 'The HD-35 acoustic guitar combines Martin\'s visually striking 3-piece back design with many of the prewar features of the legendary herringbone D-28. Tonally, the guitar\'s rosewood back produces a strong bass, making it ideal for rhythm playing. The top is constructed of solid Sitka spruce and braced with scalloped 1/4" high-performance braces to deliver big, open tones. Includes case.' , image: 'http://www.euromusicuk.co.uk/images/Martin%20HD35%20(Secondhand).png' , model: 'HD-35' , msrp: 2999 , orientation: 'Right-Handed' , price: 2999 , series: 'Standard Series' , year: 2014 , bridge_type: 'Belly' , number_of_frets: 20 , neck_type: 'Dovetail Joint' , body_wood: 'East Indian RosewoodSelect Hardwood' , case_type: 'Hardshell Case' , tuning_machines: 'Sealed Gears, D-14 Fret Body Size with Solid Top, Back, and Sides, Polished Gloss Body Finish, Solid/Square Taper Headstock and Solid East Indian Rosewood Headplate with Raised Gold Foil Decal')
