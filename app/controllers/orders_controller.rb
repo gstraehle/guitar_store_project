@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :checkout]
 
   # GET /orders
   # GET /orders.json
@@ -65,6 +65,10 @@ class OrdersController < ApplicationController
 
   end
 
+  def convert_cart_to_order
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
@@ -73,6 +77,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:user_id)
+      binding.pry
+      params.require(:order).permit(:user_id, :processed_at)
     end
 end
