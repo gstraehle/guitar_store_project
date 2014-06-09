@@ -40,7 +40,12 @@
       var user_id = <%= current_user.id %>;
       var product_id = <%= @product.id %>;
       var cart_quantity = $("input[id$='quantity']").val();
-      alert('user id ' + user_id + ', product id ' + product_id + ', cart quantity ' + cart_quantity);
+      $.ajax({
+        url: 'http://localhost:3000/orders',
+        type: 'POST',
+        data: {order: {user_id: user_id,product_id: product_id, quantity: cart_quantity, processed_at: false}}
+
+
     });
   });
 
