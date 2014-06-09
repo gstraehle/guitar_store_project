@@ -4,9 +4,7 @@
 <h2>Brand: <%=@product.brand %></h2>
 <h3>Model: <%=@product.model %></h3>
 <h3>Rating: <%=@product.avg_rating %></h3>
-<form id='add-to-cart'>
-  <input type='button' value='Add to cart'>
-</form>
+
 <%= image_tag(@product.image) %>
 <%= image_tag(@product.alt_image_1) %>
 <%= image_tag(@product.alt_image_2) %>
@@ -27,3 +25,14 @@
   <li>Case: <%=@product.case_type %></li>
   <li>Description: <%=@product.description %></li>
 </ul>
+
+<form id='add-to-cart'>
+  <input type='button' value='Add to cart' id='add_to_cart_button'>
+</form>
+<script>
+  $(document).ready(function(){
+    $('#add-to-cart').on('click', '#add_to_cart_button', function(){
+      alert('cart button working');
+    });
+  });
+</script>
