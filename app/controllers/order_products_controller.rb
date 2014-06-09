@@ -19,14 +19,10 @@ class OrderProductsController < ApplicationController
   def create
     @order_product = OrderProduct.new(order_product_params)
 
-    respond_to do |format|
-      if @order_product.save
-        format.html { redirect_to @order_product, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order_product }
-      else
-        format.html { render :new }
-        format.json { render json: @order_product.errors, status: :unprocessable_entity }
-      end
+    if @order_product.save
+      render json: @order_product, status: :created, location: @order_product
+    else
+      render json: @order_product.errors, status: :unprocessable_entity
     end
   end
 
