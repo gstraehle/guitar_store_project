@@ -1,3 +1,27 @@
-// Place all the styles related to the Products controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.summary {
+  width: 600px;
+  height: 150px;
+  border: solid black 2px;
+}
+.description {
+  width: 400px;
+  margin: 0;
+  float: left;
+}
+.image {
+  width: 200px;
+  height: 150px;
+  margin: 0;
+  float: left;
+}
+img {
+  width: 200px;
+}
+#cart {
+  width: 200px;
+  height: 200px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #ccc;
+}
