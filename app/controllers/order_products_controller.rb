@@ -28,15 +28,16 @@ class OrderProductsController < ApplicationController
 
 
   def update
-    respond_to do |format|
-      if @order_product.update(order_product_params)
-        format.html { redirect_to @order_product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order_product }
-      else
-        format.html { render :edit }
-        format.json { render json: @order_product.errors, status: :unprocessable_entity }
-      end
-    end
+    @order_product.update(order_product_params)
+    # respond_to do |format|
+    #   if @order_product.update(order_product_params)
+    #     format.html { redirect_to @order_product, notice: 'Product was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @order_product }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @order_product.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def destroy
