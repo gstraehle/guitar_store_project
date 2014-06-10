@@ -1,5 +1,5 @@
 class OrderProductsController < ApplicationController
-  before_action :set_order_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_order_product, only: [:show, :edit, :destroy]
 
   def index
     @order_products = OrderProduct.all
@@ -28,7 +28,9 @@ class OrderProductsController < ApplicationController
 
 
   def update
-    @order_product.update(order_product_params)
+    @order_product = Order.find(params[:id]).order_products.where(product_id: params[:order_product][:product_id]).first
+    @order_product.quantity = params[:order_product][:quantity]
+    @order_product.save
     # respond_to do |format|
     #   if @order_product.update(order_product_params)
     #     format.html { redirect_to @order_product, notice: 'Product was successfully updated.' }

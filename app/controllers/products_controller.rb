@@ -14,14 +14,13 @@ class ProductsController < ApplicationController
     @orders = Order.all#needed to derive most recent order/user
 
     order_products = OrderProduct.all
-
     if current_user.orders.find_by(processed_at: nil)
       @user_cart_has_item = current_user.orders.find_by(processed_at: nil).order_products.pluck(:product_id).uniq
     else
       @user_cart_has_item = []
     end
 
-
+    #finds the item numbers of current user's cart
     @user_cart_has_item.include?(@product.id) ? @use_put = true : @use_put = false
 
     @current_order_product_id = order_products.where(product_id: @product.id)
@@ -33,6 +32,7 @@ class ProductsController < ApplicationController
       @create_new_order_id = true#instructs counter click to make new order
       @next_order = @orders.last.id + 1
     end
+
   end
 
   # GET /products/new
