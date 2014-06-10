@@ -1,0 +1,21 @@
+<div id="cart">
+  <% if user_signed_in? %>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong>Your Cart</strong> <span class="badge"><%= cart.order_products.length %></span>
+    </li>
+      <% cart.order_products.each do |order_product| %>
+        <li class="list-group-item">
+          <strong>
+            <%= link_to order_product.product do %>
+              <%= order_product.product.brand %> <%= order_product.product.model %>
+            <% end %>
+          </strong><br>
+          Quantity: <%= order_product.quantity %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <h4>Sign In</h4>
+  <% end %>
+</div>
