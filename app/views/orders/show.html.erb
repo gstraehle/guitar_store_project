@@ -1,9 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @order.user %>
+  Viewing cart for <strong><%= @order.user.email %></strong>
 </p>
+
+<h2>Shopping Cart</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th class="cart-header">Description</th>
+      <th class="cart-header">Image</th>
+      <th class="cart-header">Price</th>
+      <th class="cart-header">Quantity</th>
+      <th class="cart-header">Remove</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order_products.each do |order_product| %>
+      <tr>
+        <td class="description">
+          <%= link_to order_product.product do %><%= order_product.product.brand %> <%= order_product.product.model %><% end %>
+        </td>
+        <td class="item-image"><img src="<%= order_product.product.image %>"></td>
+        <td class="price"><%= number_to_currency(order_product.unit_price) %></td>
+        <td class="quantity"><%= order_product.quantity %></td>
+        <td class="remove"> X </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a href="#"><h4>Checkout</h4></a> <br>
+
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
