@@ -32,7 +32,11 @@ gem 'devise'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
+  # in order to store env variables securely in development
+  gem 'dotenv-rails'
 end
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 
 # Use ActiveModel has_secure_password
