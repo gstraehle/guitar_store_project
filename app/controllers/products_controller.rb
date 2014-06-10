@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+
+    # If you aren't logged in right now, products show dies.
+
     @product = Product.find(params[:id])
     @orders = Order.all#needed to derive most recent order/user
 
