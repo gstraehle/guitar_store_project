@@ -12,6 +12,9 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @orders = Order.all#needed to derive most recent order/user
+    @user_cart_has_item = current_user.orders.find_by(processed_at: nil).order_products.pluck(:product_id).uniq
+    @user_cart_has_item.include?(@product.id) ? @use_put = true : @use_put = false
+
     if @orders.where(user_id: current_user.id).find_by(processed_at: nil)
       @create_new_order_id = false#instructs counter click not to make new order
       @next_order = @orders.where(user_id: current_user.id).find_by(processed_at: nil)[:id]
