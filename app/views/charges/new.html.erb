@@ -1,6 +1,4 @@
 <h1>Review Order</h1>
-<p>shopping cart items listed here</p>
-
 <table>
   <thead>
     <tr>
@@ -8,7 +6,6 @@
       <th class="cart-header">Image</th>
       <th class="cart-header">Price</th>
       <th class="cart-header">Quantity</th>
-      <th class="cart-header">Remove</th>
     </tr>
   </thead>
 
@@ -21,7 +18,6 @@
         <td class="item-image"><img src="<%= order_product.product.image %>"></td>
         <td class="price"><%= number_to_currency(order_product.unit_price) %></td>
         <td class="quantity"><%= order_product.quantity %></td>
-        <td class="remove"> X </td>
       </tr>
     <% end %>
   </tbody>
@@ -36,8 +32,9 @@
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="<%= @order.total_in_pennies %>"></script>
+          data-description="Enter payment details"
+          data-amount="<%= @order.total_in_pennies %>"
+          data-email="<%= @email%>"></script>
 <% end %>
 
 

@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :orders
+
+  def email_placeholder
+    if user_signed_in?
+      self.email
+    else
+      'Email'
+    end
+  end
 end
