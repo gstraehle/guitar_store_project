@@ -46,6 +46,10 @@
       var unit_price = <%= @product.price %>;
       var next_order = <%= @next_order %>;
       var create_new_order_id = <%= @create_new_order_id %>;
+      var post_or_put = false;
+
+//add in logic that shows if the first click is a post or put!!!
+
       if (create_new_order_id == true) {
         $.ajax({
         url: 'http://localhost:3000/orders',

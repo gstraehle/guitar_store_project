@@ -11,12 +11,12 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
-    @orders = Order.all
+    @orders = Order.all#needed to derive most recent order/user
     if @orders.where(user_id: current_user.id).find_by(processed_at: nil)
-      @create_new_order_id = false
+      @create_new_order_id = false#instructs counter click not to make new order
       @next_order = @orders.where(user_id: current_user.id).find_by(processed_at: nil)[:id]
     else
-      @create_new_order_id = true
+      @create_new_order_id = true#instructs counter click to make new order
       @next_order = @orders.last.id + 1
     end
   end
