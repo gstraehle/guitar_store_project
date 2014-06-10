@@ -1,21 +1,33 @@
-<div id="cart">
-  <% if user_signed_in? %>
-  <ul class="list-group">
-    <li class="list-group-item">
-      <strong>Your Cart</strong> <span class="badge"><%= cart.order_products.length %></span>
-    </li>
-      <% cart.order_products.each do |order_product| %>
-        <li class="list-group-item">
-          <strong>
-            <%= link_to order_product.product do %>
-              <%= order_product.product.brand %> <%= order_product.product.model %>
-            <% end %>
-          </strong><br>
-          Quantity: <%= order_product.quantity %>
-        </li>
-      <% end %>
+<% if user_signed_in? %>
+  <div id="cart">
+    <ul class="list-group">
+      <li class="list-group-item">
+
+        <strong>Your Cart</strong>
+
+        <% if current_user.orders.find_by(processed_at: nil) == nil %>
+            <span class="badge">0</span>
+          </li>
+
+        <% else %>
+            <span class="badge"><%= current_user.orders.find_by(processed_at: nil).order_products.length %></span>
+          </li>
+
+          <% current_user.orders.find_by(processed_at: nil).order_products.each do |order_product| %>
+            <li class="list-group-item">
+              <strong>
+                <%= link_to order_product.product do %>
+                  <%= order_product.product.brand %> <%= order_product.product.model %>
+                <% end %>
+              </strong><br>
+              Quantity: <%= order_product.quantity %>
+            </li>
+          <% end %>
+        <% end %>
+
     </ul>
-  <% else %>
-    <h4>Sign In</h4>
-  <% end %>
-</div>
+  </div>
+<% else %> <!-- user_signed_in -->
+<div></div>
+<% end %> <!-- user_signed_in -->
+
