@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   patch 'orders/:id/checkout', to: 'orders#convert_cart_to_order', as: 'convert'
   get 'orders/:id/confirmation', to: 'orders#confirmation', as: 'confirmation'
 
+  resources :charges
+
 end
