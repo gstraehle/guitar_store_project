@@ -8,9 +8,15 @@ class User < ActiveRecord::Base
 
   after_create :setup_initial_cart
 
+  def last_open_order
+    self.orders.where(processed_at: nil).last
+  end
+
   private
 
   def setup_initial_cart
     Order.create(user: self)
   end
+
+
 end

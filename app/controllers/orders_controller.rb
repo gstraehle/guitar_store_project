@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = current_user.orders.last
+    @order = current_user.last_open_order
     if @order.products << Product.find(params[:order][:product_id])
       render json: @order
     else
