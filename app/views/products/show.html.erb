@@ -4,7 +4,7 @@
 <%= link_to 'Back', products_path %>
 <br>
 <h2>Brand: <%=@product.brand %></h2>
-<h3>Model: <%=@product.model %></h3>
+<h3 id="product-model" data-id='<%= @product.id %>'>Model: <%=@product.model %></h3>
 <h3>Rating: <%=@product.avg_rating %></h3>
 
 <%= image_tag(@product.image) %>
@@ -31,9 +31,8 @@
 <form id='add-to-cart'>
   <input type='button' value='Add to cart' class='add_to_cart_button'>
 </form>
-<div class="box">
-    <input id="quantity" value="1" />
-    <button id="down" onclick="modify_qty(-1)">-1</button>
-    <button id="up" onclick="modify_qty(1)">+1</button>
-</div>
+
+<form id='remove-from-cart' style="visibility:hidden">
+  <input type='button' value='Remove from cart' class='remove_from_cart_button'>
+</form>
 
