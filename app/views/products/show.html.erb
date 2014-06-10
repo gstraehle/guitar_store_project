@@ -1,3 +1,5 @@
+<%= @next_order %>
+
 <h1><%= flash[:message] %></h1>
 <p id="notice"><%= notice %></p>
 <%= link_to 'Back', products_path %>
@@ -42,10 +44,11 @@
       var product_id = <%= @product.id %>;
       var cart_quantity = $("input[id$='quantity']").val();
       var unit_price = <%= @product.price %>;
+      var next_order = <%= @next_order %>;
       $.ajax({
         url: 'http://localhost:3000/order_products',
         type: 'POST',
-        data: {order_product: {product_id: product_id, quantity: cart_quantity, unit_price: unit_price, order_id: 4}}
+        data: {order_product: {product_id: product_id, quantity: cart_quantity, unit_price: unit_price, order_id: next_order}}
       });
     });
   });

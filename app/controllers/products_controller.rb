@@ -11,6 +11,12 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    @orders = Order.all
+    if @orders.where(user_id: current_user.id).find_by(processed_at: nil)
+      @next_order = @orders.where(user_id: current_user.id).find_by(processed_at: nil)[:id]
+    else
+      @next_order = @orders.last.id + 1
+    end
   end
 
   # GET /products/new
