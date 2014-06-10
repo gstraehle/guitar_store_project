@@ -13,8 +13,10 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @orders = Order.all
     if @orders.where(user_id: current_user.id).find_by(processed_at: nil)
+      @create_new_order_id = false
       @next_order = @orders.where(user_id: current_user.id).find_by(processed_at: nil)[:id]
     else
+      @create_new_order_id = true
       @next_order = @orders.last.id + 1
     end
   end

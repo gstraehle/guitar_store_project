@@ -1,4 +1,4 @@
-<%= @next_order %>
+
 
 <h1><%= flash[:message] %></h1>
 <p id="notice"><%= notice %></p>
@@ -45,13 +45,22 @@
       var cart_quantity = $("input[id$='quantity']").val();
       var unit_price = <%= @product.price %>;
       var next_order = <%= @next_order %>;
+      var create_new_order_id = <%= @create_new_order_id %>;
+      if (create_new_order_id == true) {
+        $.ajax({
+        url: 'http://localhost:3000/orders',
+        type: 'POST',
+        data: {order: {id: next_order, user_id: user_id}}
+      });//end of first ajax post
+      var create_new_order_id = true;//reseting variable to stop POSTing
+      }//end of if
       $.ajax({
         url: 'http://localhost:3000/order_products',
         type: 'POST',
         data: {order_product: {product_id: product_id, quantity: cart_quantity, unit_price: unit_price, order_id: next_order}}
-      });
-    });
-  });
+      });//end of second ajax post
+    });//end of on click
+  });//end of document ready
 
 </script>
 <script>
