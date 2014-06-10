@@ -1,0 +1,10 @@
+<p>Thank you for shopping at our store!</p>
+
+<%= link_to "Back to store listing", root_path %>
+
+
+
+<% if Rails.env.development?%>
+<p class='debugger'>Debugger (shown in development only)</p>
+<p class='debugger'><%= @order.inspect %></p>
+<% end %>
