@@ -1,11 +1,11 @@
 <h1>Review Order</h1>
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th class="cart-header">Description</th>
       <th class="cart-header">Image</th>
-      <th class="cart-header">Price</th>
-      <th class="cart-header">Quantity</th>
+      <th class="cart-header text-center">Quantity</th>
+      <th class="cart-header text-right">Price</th>
     </tr>
   </thead>
 
@@ -16,19 +16,19 @@
           <%= link_to order_product.product do %><%= order_product.product.brand %> <%= order_product.product.model %><% end %>
         </td>
         <td class="item-image"><img src="<%= order_product.product.image %>"></td>
-        <td class="price"><%= number_to_currency(order_product.unit_price) %></td>
-        <td class="quantity"><%= order_product.quantity %></td>
+        <td class="quantity text-center"><%= order_product.quantity %></td>
+        <td class="price text-right"><%= number_to_currency(order_product.unit_price) %></td>
       </tr>
     <% end %>
+    <tr>
+    <td colspan='2'></td>
+    <td><strong>Subtotal: </strong></td>
+    <td class='text-right'><strong><%= number_to_currency @order.total %></strong></td>
+    </tr>
   </tbody>
 </table>
 
 <%= form_tag order_charges_path do %>
-  <article>
-    <label class="amount">
-      <span><%= number_to_currency @order.total %></span>
-    </label>
-  </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
