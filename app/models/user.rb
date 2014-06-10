@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :orders
+
+  after_create :setup_initial_cart
+
+  private
+
+  def setup_initial_cart
+    Order.create(user: self)
+  end
 end
