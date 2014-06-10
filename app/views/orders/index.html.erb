@@ -1,30 +1,32 @@
 <h1>Listing everyone's orders</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>#Items</th>
-      <th>Subtotals</th>
-      <th>Total</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @orders.each do |order| %>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= order.user.email %></td>
-        <td><%= order.order_products.length %></td>
-        <td><%= order.total %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>User</th>
+        <th class="text-right">Items</th>
+        <th class="text-right">Total</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.user.email %></td>
+          <td class="text-right"><%= order.order_products.length %></td>
+          <td class="text-right"><%= number_to_currency(order.total) %></td>
+          <td class="text-center"><%= link_to 'Show', order %></td>
+          <td class="text-center"><%= link_to 'Edit', edit_order_path(order) %></td>
+          <td class="text-center"><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+
 
 <%= link_to 'New Order', new_order_path %>
+</div> <!-- /container -->
