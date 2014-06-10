@@ -1,8 +1,9 @@
-<%= @use_put %>
-<%= @user_cart_has_item.inspect %>
-<%= @product.id %>
-<%= @check %>
-
+useput:<%= @use_put %>
+cart:<%= @user_cart_has_item.inspect %>
+prod:<%= @product.id %>
+currentOPI<%= @current_order_product_id %>
+<br>
+nextorder<%= @next_order %>
 <h1><%= flash[:message] %></h1>
 <p id="notice"><%= notice %></p>
 <%= link_to 'Back', products_path %>
@@ -42,19 +43,18 @@
 </div>
 <script>
   $(document).ready(function(){
+      var use_put = <%= @use_put %>;
+      var create_new_order_id = <%= @create_new_order_id %>;
     $('#add-to-cart').on('click', '.add_to_cart_button', function(){
       var user_id = <%= current_user.id %>;
       var product_id = <%= @product.id %>;
       var cart_quantity = $("input[id$='quantity']").val();
       var unit_price = <%= @product.price %>;
       var next_order = <%= @next_order %>;
-      var create_new_order_id = <%= @create_new_order_id %>;
-      var post_or_put = false;
-      var use_put = <%= @use_put %>;
       var user_cart_has_item = <%= @user_cart_has_item %>;
 //add in logic that shows if the first click is a post or put!!!
 
-      if (create_new_order_id == true) {
+      if (create_new_order_id === true) {
         $.ajax({
         url: 'http://localhost:3000/orders',
         type: 'POST',
@@ -62,7 +62,8 @@
       });//end of first ajax post
       create_new_order_id = false;//reseting variable to stop POSTing
       }//end of if
-      if (use_put == false){
+
+      if (use_put === false){
         $.ajax({
           url: 'http://localhost:3000/order_products',
           type: 'POST',
@@ -72,7 +73,7 @@
       } //end of 'if' part of second if;
       else {
         $.ajax({
-          url: 'http://localhost:3000/order_products/' + user_cart_has_item,
+          url: 'http://localhost:3000/order_products/' + next_order,
           type: 'PUT',
           data: {order_product: {quantity: cart_quantity}}
         });//end of second ajax post
