@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :set_cart, only: [:show, :index]
 
   def set_cart
-    @cart = Order.where(user_id: current_user.id).find_by(processed_at: nil)
+    if user_signed_in?
+      @cart = Order.where(user_id: current_user.id).find_by(processed_at: nil)
+    end
   end
 end
