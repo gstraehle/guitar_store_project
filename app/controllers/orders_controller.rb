@@ -62,21 +62,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def checkout
-
-  end
-
-  def convert_cart_to_order
-    @date = Time.now
-    @order.processed_at = @date
-    @order.save
-    redirect_to confirmation_path(@order), notice: 'Your order was successfully placed.'
-  end
-
-  def confirmation
-
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_order
