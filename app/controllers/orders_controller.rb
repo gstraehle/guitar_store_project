@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy, :checkout]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :checkout, :convert_cart_to_order, :confirmation]
 
   # GET /orders
   # GET /orders.json
@@ -66,6 +66,13 @@ class OrdersController < ApplicationController
   end
 
   def convert_cart_to_order
+    @date = Time.now
+    @order.processed_at = @date
+    @order.save
+    redirect_to confirmation_path(@order), notice: 'Your order was successfully placed.'
+  end
+
+  def confirmation
 
   end
 
@@ -78,6 +85,6 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       binding.pry
-      params.require(:order).permit(:user_id, :processed_at)
+      params.require(:order).permit(:user_id)
     end
 end
