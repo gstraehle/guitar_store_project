@@ -4,12 +4,11 @@ class Order < ActiveRecord::Base
   has_many :order_products
 
   def total
-    totals = []
-    self.order_products.each do |product|
-      totals << product.subtotal
-    end
-    totals.sum
+    self.order_products.pluck(:unit_price).sum.to_i
   end
 
+  def total_in_pennies
+    self.total * 100
+  end
 
 end

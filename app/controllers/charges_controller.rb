@@ -1,6 +1,7 @@
 class ChargesController < ApplicationController
   def new
-    @order = Order.find(params[id:])
+    @order = Order.find(params[:order_id])
+    @order_products = @order.order_products
   end
 
   def create

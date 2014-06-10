@@ -32,8 +32,7 @@
   </tbody>
 </table>
 
-<a href="#"><h4>Checkout</h4></a> <br>
 
-
+<%= link_to 'Checkout', new_order_charge_path(@order) %>
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>
