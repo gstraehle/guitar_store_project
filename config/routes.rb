@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  root 'products#index'
   resources :orders
 
   devise_for :users
-  root 'products#index'
+
   resources :products
 
   get 'orders/:id/checkout', to: 'orders#checkout'
-  patch 'orders/:id/checkout', to: 'order#convert_cart_to_order', as: 'convert'
+  patch 'orders/:id/checkout', to: 'orders#convert_cart_to_order', as: 'convert'
+  get 'orders/:id/confirmation', to: 'orders#confirmation', as: 'confirmation'
 
 end
