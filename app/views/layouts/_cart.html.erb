@@ -3,13 +3,13 @@
     <ul class="list-group">
       <li class="list-group-item">
 
-        <strong>Your Cart</strong>
-
         <% if current_user.orders.find_by(processed_at: nil) == nil %>
+            <strong>Your Cart</strong>
             <span class="badge">0</span>
           </li>
 
         <% else %>
+            <strong><%= link_to "Your Cart", order_path(current_user.orders.find_by(processed_at: nil).id) %></strong>
             <span class="badge"><%= current_user.orders.find_by(processed_at: nil).order_products.length %></span>
           </li>
 
