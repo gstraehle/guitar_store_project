@@ -1,33 +1,33 @@
-<h1>Review Order</h1>
+<h2>Review Order</h2>
 <table class='table'>
   <thead>
     <tr>
-      <th class="cart-header">Description</th>
-      <th class="cart-header">Image</th>
-      <th class="cart-header text-center">Quantity</th>
-      <th class="cart-header text-right">Price</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th class="text-center">Quantity</th>
+      <th class="text-right">Price</th>
     </tr>
   </thead>
 
   <tbody>
     <% @order_products.each do |order_product| %>
       <tr>
-        <td class="description">
+        <td class="item-description">
           <%= link_to order_product.product do %><%= order_product.product.brand %> <%= order_product.product.model %><% end %>
         </td>
-        <td class="item-image"><img src="<%= order_product.product.image %>"></td>
-        <td class="quantity text-center"><%= order_product.quantity %></td>
-        <td class="price text-right"><%= number_to_currency(order_product.unit_price) %></td>
+        <td class="item-image"><%= image_tag(order_product.product.image) %></td>
+        <td class="item-quantity text-center"><%= order_product.quantity %></td>
+        <td class="item-price text-right"><%= number_to_currency(order_product.product.price) %></td>
       </tr>
     <% end %>
     <tr>
-    <td colspan='3'></td>
-    <td class='text-right'><strong>Subtotal: <%= number_to_currency @order.total %></strong></td>
+    <td colspan="3"></td>
+    <td class="text-right"><strong>Subtotal: <%= number_to_currency @order.total %></strong></td>
     </tr>
   </tbody>
 </table>
 
-<div class='text-right'>
+<div class="text-right">
 <%= form_tag order_charges_path do %>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"

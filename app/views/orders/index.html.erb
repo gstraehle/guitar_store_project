@@ -1,35 +1,34 @@
-<h1>Listing everyone's orders</h1>
-
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Processed At</th>
-        <th class="text-right">Items</th>
-        <th class="text-right">Total</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @orders.each do |order| %>
+<h1>Your Order History</h1>
+<div class="row">
+  <div class="col-md-8">
+    <table class="table table-hover">
+      <thead>
         <tr>
-          <td><%= order.user.email %></td>
-          <td>
-            <% if order.processed_at == nil %>
-              Cart (order in progress)
-            <% else %>
-              <%= order.processed_at %>
-            <% end %>
-          </td>
-          <td class="text-right"><%= order.order_products.length %></td>
-          <td class="text-right"><%= number_to_currency(order.total) %></td>
-          <td class="text-center"><%= link_to 'Show', order %></td>
-          <td class="text-center"><%= link_to 'Edit', edit_order_path(order) %></td>
-          <td class="text-center"><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <th>Order No.</th>
+          <th>Processed At</th>
+          <th class="text-right">Items</th>
+          <th class="text-right">Total</th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-<%= link_to 'New Order', new_order_path %>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+            <td>
+              <% if order.processed_at == nil %>
+                Cart (order in progress)
+              <% else %>
+                <%= order.processed_at %>
+              <% end %>
+            </td>
+            <td class="text-right"><%= order.order_products.length %></td>
+            <td class="text-right"><%= number_to_currency(order.total) %></td>
+            <td class="text-center"><%= link_to 'View', order %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
