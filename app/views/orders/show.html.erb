@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  Viewing cart for <strong><%= @order.user.email %></strong>
+  Viewing order ID <%= @order.id %> for <%= @order.user.email %>
 </p>
 
 <h2>Shopping Cart</h2>
@@ -25,7 +25,7 @@
           <%= link_to order_product.product do %><%= order_product.product.brand %> <%= order_product.product.model %><% end %>
         </td>
         <td class="item-image"><%= image_tag(order_product.product.image) %></td>
-        <td class="item-price"><%= number_to_currency(order_product.unit_price) %></td>
+        <td class="item-price"><%= number_to_currency(order_product.product.price) %></td>
         <td class="item-quantity"><%= order_product.quantity %></td>
         <td class="item-remove">(OrderProduct#destroy)</td>
       </tr>
