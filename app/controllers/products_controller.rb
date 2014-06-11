@@ -10,20 +10,12 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-
-
-    @product = Product.find(params[:id])#KEEP!!!
-    @orders = Order.all#needed to derive most recent order/user
-
-    order_products = OrderProduct.all#KEEP!!!
-
-
+    @product = Product.find(params[:id])
+    order_products = OrderProduct.all
     #finds the item numbers of current user's cart
-    @in_cart = current_user.orders.find_by(processed_at: nil).order_products.pluck(:product_id).uniq.include?(@product.id)#KEEP!!!
-    order_product_row = current_user.orders.find_by(processed_at: nil)[:id]#KEEP!!!
-    @in_cart ? @order_product_row = order_products.where(order_id: order_product_row).find_by(product_id: @product)[:id] : @order_product_row = 'n/a'#KEEP!!!
-    @current_order_product_id = order_products.where(product_id: @product.id)
-
+    @in_cart = current_user.orders.find_by(processed_at: nil).order_products.pluck(:product_id).uniq.include?(@product.id)
+    order_product_row = current_user.orders.find_by(processed_at: nil)[:id]
+    @in_cart ? @order_product_row = order_products.where(order_id: order_product_row).find_by(product_id: @product)[:id] : @order_product_row = 'n/a'
   end
 
   # GET /products/new
