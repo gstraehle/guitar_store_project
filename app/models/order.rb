@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   has_many :products, through: :order_products
 
   def total
-    self.order_products.pluck(:unit_price).sum.to_i
+    self.products.pluck(:price).sum.to_i
   end
 
   def total_in_pennies
