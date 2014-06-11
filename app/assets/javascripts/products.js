@@ -13,7 +13,7 @@ $(document).ready(function(){
   });
 });
 var StoreApp = StoreApp || {};
-var RowID;
+
 
 StoreApp.addProductToCart = function() {
   var product_id = $('#product-model').attr('data-id');
@@ -36,6 +36,7 @@ StoreApp.addProductToCart = function() {
 };
 
 StoreApp.removeProductToCart = function() {
+  RowID = $('.remove_from_cart_button').attr('id');
   $('.add_to_cart_button').show();
   $.ajax({
     url: '/order_products/' + RowID,

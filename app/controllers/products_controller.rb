@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     #finds the item numbers of current user's cart
     @in_cart = current_user.orders.find_by(processed_at: nil).order_products.pluck(:product_id).uniq.include?(@product.id)#KEEP!!!
     order_product_row = current_user.orders.find_by(processed_at: nil)[:id]#KEEP!!!
-    @order_product_row = order_products.where(order_id: order_product_row).find_by(product_id: @product)[:id]#KEEP!!!
+    @in_cart ? @order_product_row = order_products.where(order_id: order_product_row).find_by(product_id: @product)[:id] : @order_product_row = 'n/a'#KEEP!!!
     @current_order_product_id = order_products.where(product_id: @product.id)
 
     if @orders.where(user_id: current_user.id).find_by(processed_at: nil)
