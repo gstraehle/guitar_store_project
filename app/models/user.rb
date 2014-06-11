@@ -6,17 +6,14 @@ class User < ActiveRecord::Base
 
   has_many :orders
 
-  after_create :setup_initial_cart
+  after_create :setup_cart
 
   def last_open_order
     self.orders.where(processed_at: nil).last
   end
 
-  private
-
-  def setup_initial_cart
+  def setup_cart
     Order.create(user: self)
   end
-
 
 end

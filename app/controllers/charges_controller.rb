@@ -31,6 +31,7 @@ class ChargesController < ApplicationController
       order_product.save
     end
 
+    current_user.setup_cart
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
