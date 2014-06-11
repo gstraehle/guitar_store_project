@@ -21,6 +21,9 @@ puts('Creating users')
 kathleen = User.create(email: "kathleen@example.com", password: 'password')
 george = User.create(email: "george@example.com", password: 'password')
 
+puts('Clearing automatically generated carts')
+Order.delete_all
+
 puts('Creating orders')
 order1 = Order.create(user: kathleen, processed_at: "2014-06-09 16:32:16", created_at: "2014-06-09 16:29:16", updated_at: "2014-06-09 16:32:16")
 order2 = Order.create(user: george, processed_at: "2014-06-09 16:30:04", created_at: "2014-06-09 15:56:14", updated_at: "2014-06-09 16:30:04")
@@ -32,5 +35,5 @@ cart2 = Order.create(user: george, processed_at: nil, created_at: "2014-06-09 15
 puts('Creating order products')
 OrderProduct.create(order: order1, product: product1, quantity: 2, unit_price: 2222)
 OrderProduct.create(order: order1, product: product2, quantity: 1, unit_price: 2615.0)
-OrderProduct.create(order: cart1, product: product3, quantity: 1, unit_price: 749.0)
-OrderProduct.create(order: cart1, product: product4, quantity: 1, unit_price: 679.0)
+OrderProduct.create(order: cart1, product: product3, quantity: 1)
+OrderProduct.create(order: cart1, product: product4, quantity: 1)

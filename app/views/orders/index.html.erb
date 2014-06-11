@@ -4,6 +4,7 @@
     <thead>
       <tr>
         <th>User</th>
+        <th>Processed At</th>
         <th class="text-right">Items</th>
         <th class="text-right">Total</th>
         <th colspan="3"></th>
@@ -14,6 +15,13 @@
       <% @orders.each do |order| %>
         <tr>
           <td><%= order.user.email %></td>
+          <td>
+            <% if order.processed_at == nil %>
+              Cart (order in progress)
+            <% else %>
+              <%= order.processed_at %>
+            <% end %>
+          </td>
           <td class="text-right"><%= order.order_products.length %></td>
           <td class="text-right"><%= number_to_currency(order.total) %></td>
           <td class="text-center"><%= link_to 'Show', order %></td>
