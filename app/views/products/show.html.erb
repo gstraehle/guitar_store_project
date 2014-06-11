@@ -7,10 +7,10 @@
 <h3 id="product-model" data-id='<%= @product.id %>'>Model: <%=@product.model %></h3>
 <h3>Rating: <%=@product.avg_rating %></h3>
 
-<%= image_tag(product.image) %>
-<%= image_tag(product.alt_image_1) %>
-<%= image_tag(product.alt_image_2) %>
-<%= image_tag(product.alt_image_3) %>
+<%= image_tag(@product.image) %>
+<%= image_tag(@product.alt_image_1) %>
+<%= image_tag(@product.alt_image_2) %>
+<%= image_tag(@product.alt_image_3) %>
 
 <h3>MSRP: <%=@product.msrp %></h3>
 <h1>Our price: <%=@product.price %></h1>
