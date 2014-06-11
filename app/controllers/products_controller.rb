@@ -43,6 +43,13 @@ class ProductsController < ApplicationController
     end
   end
 
+  def order_by_price
+    binding.pry
+    @products = Product.all.sort(:price)
+    @products
+    redirect_to 'root_path'
+  end
+
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
