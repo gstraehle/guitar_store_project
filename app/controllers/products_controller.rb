@@ -13,10 +13,10 @@ class ProductsController < ApplicationController
 
     # If you aren't logged in right now, products show dies.
 
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:id])#KEEP!!!
     @orders = Order.all#needed to derive most recent order/user
 
-    order_products = OrderProduct.all
+    order_products = OrderProduct.all#KEEP!!!
     if current_user.orders.find_by(processed_at: nil)
       @user_cart_has_item = current_user.orders.find_by(processed_at: nil).order_products.pluck(:product_id).uniq
     else
@@ -24,8 +24,9 @@ class ProductsController < ApplicationController
     end
 
     #finds the item numbers of current user's cart
-    @user_cart_has_item.include?(@product.id) ? @use_put = true : @use_put = false
-
+    @in_cart = current_user.orders.find_by(processed_at: nil).order_products.pluck(:product_id).uniq.include?(@product.id)#KEEP!!!
+    order_product_row = current_user.orders.find_by(processed_at: nil)[:id]#KEEP!!!
+    @order_product_row = order_products.where(order_id: order_product_row).find_by(product_id: @product)[:id]#KEEP!!!
     @current_order_product_id = order_products.where(product_id: @product.id)
 
     if @orders.where(user_id: current_user.id).find_by(processed_at: nil)

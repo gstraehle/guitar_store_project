@@ -1,13 +1,23 @@
 $(document).ready(function(){
+  var product_id = $('#product-model').attr('data-id');
   $('#add-to-cart').on('click', '.add_to_cart_button', StoreApp.addProductToCart);
   $('#remove-from-cart').on('click', '.remove_from_cart_button', StoreApp.removeProductToCart);
+  $.ajax({
+    url: '/orders',
+    data: {order: {product_id: product_id}},
+    dataType: 'json'
+  })
+  .done(function(result) {
+    result = result[result.length -1];
+    console.log(result);
+  });
 });
-
 var StoreApp = StoreApp || {};
 var RowID;
 
 StoreApp.addProductToCart = function() {
   var product_id = $('#product-model').attr('data-id');
+  $('.add_to_cart_button').hide();
   $.ajax({
     url: '/orders',
     type: 'POST',
@@ -26,6 +36,7 @@ StoreApp.addProductToCart = function() {
 };
 
 StoreApp.removeProductToCart = function() {
+  $('.add_to_cart_button').show();
   $.ajax({
     url: '/order_products/' + RowID,
     type: 'DELETE'
