@@ -22,7 +22,7 @@ class ChargesController < ApplicationController
     )
 
     @order = Order.find(params[:order_id])
-    @order.checkout
+    @order.checkout(charge.id)
     current_user.setup_cart
 
   rescue Stripe::CardError => e

@@ -14,8 +14,9 @@ class Order < ActiveRecord::Base
 
   # Updates processed_at column and sets unit_price on each line item
   # so future price increases do not impact the order history.
-  def checkout
+  def checkout(stripe_id)
     self.processed_at = Time.now
+    self.stripe_charge_id = stripe_id
     self.save
     self.order_products.each do |order_product|
       order_product.unit_price = Product.find(order_product.product_id).price
