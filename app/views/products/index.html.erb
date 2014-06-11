@@ -1,14 +1,13 @@
-<h1>Listing products</h1>
+<h2>Our Guitars</h2>
 
 
 <% @products.each do |product| %>
-  <div class='summary'>
+  <div class='summary clearfix'>
     <div class='description'>
-      <h3><%= product.category if (product.category)  %></h3>
+      <h3><%= product.brand if (product.brand)  %> <%= product.model if (product.model)  %></h3>
       <ul>
-        <li>Average Rating: <%= product.brand if (product.brand)  %></li>
-        <li><%= product.brand if (product.brand)  %></li>
-        <li><%= product.model if (product.model)  %></li>
+        <li>Average Rating: <%= product.avg_rating if (product.avg_rating)  %></li>
+        <li><%= product.category if (product.category)  %></li>
         <li><%= product.price if (product.price)  %></li>
         <li><%= link_to 'See more detail...', product %></li>
       </ul>
