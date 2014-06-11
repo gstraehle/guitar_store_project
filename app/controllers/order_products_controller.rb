@@ -29,7 +29,7 @@ class OrderProductsController < ApplicationController
 
   def update
     @order_product = Order.find(params[:id]).order_products.where(product_id: params[:order_product][:product_id]).first
-    @order_product.quantity = params[:order_product][:quantity]
+    @order_product.quantity = 1
     @order_product.save
 
   end
