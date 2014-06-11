@@ -20,6 +20,7 @@ class ChargesController < ApplicationController
       :description => 'Rails Stripe customer',
       :currency    => 'usd'
     )
+
     @date = Time.now
     @order = Order.find(params[:order_id])
     @order.processed_at = @date
@@ -34,8 +35,6 @@ class ChargesController < ApplicationController
     def email_placeholder
       if user_signed_in?
         current_user.email
-      else
-        'Email'
       end
     end
 end
