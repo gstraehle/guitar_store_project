@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.last_open_order
     if @order.products << Product.find(params[:order][:product_id])
-      render json: @order
+      render json: @order.order_products
     else
       render json: @order.errors, status: :unprocessable_entity
     end

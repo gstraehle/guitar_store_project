@@ -1,5 +1,5 @@
 class OrderProductsController < ApplicationController
-  before_action :set_order_product, only: [:show, :edit, :destroy]
+  before_action :set_order_product, only: [:show, :edit, :destroy]#removed destroy
 
   def index
     @order_products = OrderProduct.all
@@ -44,10 +44,7 @@ class OrderProductsController < ApplicationController
 
   def destroy
     @order_product.destroy
-    respond_to do |format|
-      format.html { redirect_to order_products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+
   end
 
   private

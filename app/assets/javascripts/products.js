@@ -1,11 +1,10 @@
 $(document).ready(function(){
-
-
   $('#add-to-cart').on('click', '.add_to_cart_button', StoreApp.addProductToCart);
+  $('#remove-from-cart').on('click', '.remove_from_cart_button', StoreApp.removeProductToCart);
 });
 
-var StoreApp = StoreApp || {}
-
+var StoreApp = StoreApp || {};
+var RowID;
 
 StoreApp.addProductToCart = function() {
   var product_id = $('#product-model').attr('data-id');
@@ -13,6 +12,23 @@ StoreApp.addProductToCart = function() {
     url: '/orders',
     type: 'POST',
     data: {order: {product_id: product_id}}
+  })
+  .done(function(result) {
+    RowID = result[result.length -1]['id'];
+    console.log("success");
+  })
+  .fail(function() {
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
+};
+
+StoreApp.removeProductToCart = function() {
+  $.ajax({
+    url: '/order_products/' + RowID,
+    type: 'DELETE'
   })
   .done(function(result) {
     console.log("success");
