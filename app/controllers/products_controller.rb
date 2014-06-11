@@ -11,31 +11,18 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
 
-    # If you aren't logged in right now, products show dies.
 
     @product = Product.find(params[:id])#KEEP!!!
     @orders = Order.all#needed to derive most recent order/user
 
     order_products = OrderProduct.all#KEEP!!!
-    if current_user.orders.find_by(processed_at: nil)
-      @user_cart_has_item = current_user.orders.find_by(processed_at: nil).order_products.pluck(:product_id).uniq
-    else
-      @user_cart_has_item = []
-    end
+
 
     #finds the item numbers of current user's cart
     @in_cart = current_user.orders.find_by(processed_at: nil).order_products.pluck(:product_id).uniq.include?(@product.id)#KEEP!!!
     order_product_row = current_user.orders.find_by(processed_at: nil)[:id]#KEEP!!!
     @in_cart ? @order_product_row = order_products.where(order_id: order_product_row).find_by(product_id: @product)[:id] : @order_product_row = 'n/a'#KEEP!!!
     @current_order_product_id = order_products.where(product_id: @product.id)
-
-    if @orders.where(user_id: current_user.id).find_by(processed_at: nil)
-      @create_new_order_id = false#instructs counter click not to make new order
-      @next_order = @orders.where(user_id: current_user.id).find_by(processed_at: nil)[:id]
-    else
-      @create_new_order_id = true#instructs counter click to make new order
-      @next_order = @orders.last.id + 1
-    end
 
   end
 
