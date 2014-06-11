@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $( ".remove_item" ).click(function() {
+  $( ".remove-item" ).click(function() {
     var confirmation = confirm('Are you sure you want to remove this item?');
     if (confirmation == true) {
       $.ajax({
@@ -15,6 +15,8 @@ $(document).ready(function(){
       .always(function() {
         console.log("complete");
       });
+      var row_selector = "#" + this.id;
+      $(row_selector).hide('slow');
     }
   });
 });
