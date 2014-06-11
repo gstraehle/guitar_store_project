@@ -11,31 +11,30 @@
 
   <tbody>
     <% @order_products.each do |order_product| %>
-      <tr>
-        <td class="item-description">
-          <%= link_to order_product.product do %><%= order_product.product.brand %> <%= order_product.product.model %><% end %>
-        </td>
-        <td class="item-image"><%= image_tag(order_product.product.image) %></td>
-        <td class="item-quantity text-center"><%= order_product.quantity %></td>
-        <td class="item-price text-right"><%= number_to_currency(order_product.product.price) %></td>
-      </tr>
+    <tr>
+      <td class="description">
+        <%= link_to order_product.product do %><%= order_product.product.brand %> <%= order_product.product.model %><% end %>
+      </td>
+      <td class="item-image"><%= image_tag(order_product.product.image) %></td>
+      <td class="quantity text-center"><%= order_product.quantity %></td>
+      <td class="price text-right"><%= number_to_currency(Product.find(order_product.product_id).price) %></td>
+    </tr>
     <% end %>
     <tr>
-    <td colspan="3"></td>
-    <td class="text-right"><strong>Subtotal: <%= number_to_currency @order.total %></strong></td>
+      <td colspan='3'></td>
+      <td class='text-right'><strong>Subtotal: <%= number_to_currency @order.total %></strong></td>
     </tr>
   </tbody>
 </table>
 
-<div class="text-right">
-<%= form_tag order_charges_path do %>
-
+<div class='text-right'>
+  <%= form_tag order_charges_path do %>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Enter payment details"
-          data-amount="<%= @order.total_in_pennies %>"
-          data-email="<%= @email%>"></script>
-<% end %>
+  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+  data-description="Enter payment details"
+  data-amount="<%= @order.total_in_pennies %>"
+  data-email="<%= @email%>"></script>
+  <% end %>
 </div>
 
 
