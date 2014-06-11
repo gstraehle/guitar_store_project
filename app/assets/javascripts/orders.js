@@ -17,6 +17,9 @@ $(document).ready(function(){
       });
       var row_selector = "#" + this.id;
       $(row_selector).hide('slow');
+
+      var product_removed = "#product_" + this.id;
+      $(product_removed).hide('slow');
     }
   });
 });

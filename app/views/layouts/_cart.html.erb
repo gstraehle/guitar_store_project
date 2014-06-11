@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <div id="cart">
-    <ul class="list-group">
+    <ul class="list-group" id="cart-preview">
       <li class="list-group-item">
 
         <% if current_user.orders.find_by(processed_at: nil) == nil %>
@@ -14,13 +14,13 @@
           </li>
 
           <% current_user.orders.find_by(processed_at: nil).order_products.each do |order_product| %>
-            <li class="list-group-item">
+            <li class="list-group-item" id="product_<%= order_product.id %>">
               <strong>
                 <%= link_to order_product.product do %>
                   <%= order_product.product.brand %> <%= order_product.product.model %>
                 <% end %>
               </strong><br>
-              Quantity: <%= order_product.quantity %>
+              <%= number_to_currency(order_product.product.price) %>
             </li>
           <% end %>
         <% end %>
