@@ -2,10 +2,10 @@
 <table class='table'>
   <thead>
     <tr>
-      <th class="cart-header">Description</th>
-      <th class="cart-header">Image</th>
-      <th class="cart-header text-center">Quantity</th>
-      <th class="cart-header text-right">Price</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th class="text-center">Quantity</th>
+      <th class="text-right">Price</th>
     </tr>
   </thead>
 
@@ -29,7 +29,6 @@
 
 <div class='text-right'>
   <%= form_tag order_charges_path do %>
-
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
   data-description="Enter payment details"
