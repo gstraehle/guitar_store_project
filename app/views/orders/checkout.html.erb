@@ -1,0 +1,6 @@
+<h1>Checkout</h1>
+
+  <%= form_for @order, url: convert_path(@order) do |f| %>
+  <%= f.submit "Place order", class: "btn btn-default" %>
+  <% end %>
+

@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+
+p.debugger {
+  color: gray;
+}
+
+#cart {
+  width: 30%;
+  position: fixed;
+  top: 0;
+  right: 0;
+}

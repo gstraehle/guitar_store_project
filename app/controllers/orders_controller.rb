@@ -11,6 +11,8 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
 
+    @order_products = @order.order_products # returns an array
+
   end
 
   # GET /orders/new

@@ -1,0 +1,33 @@
+<% if user_signed_in? %>
+  <div id="cart">
+    <ul class="list-group">
+      <li class="list-group-item">
+
+        <% if current_user.orders.find_by(processed_at: nil) == nil %>
+            <strong>Your Cart</strong>
+            <span class="badge">0</span>
+          </li>
+
+        <% else %>
+            <strong><%= link_to "Your Cart", order_path(current_user.orders.find_by(processed_at: nil).id) %></strong>
+            <span class="badge"><%= current_user.orders.find_by(processed_at: nil).order_products.length %></span>
+          </li>
+
+          <% current_user.orders.find_by(processed_at: nil).order_products.each do |order_product| %>
+            <li class="list-group-item">
+              <strong>
+                <%= link_to order_product.product do %>
+                  <%= order_product.product.brand %> <%= order_product.product.model %>
+                <% end %>
+              </strong><br>
+              Quantity: <%= order_product.quantity %>
+            </li>
+          <% end %>
+        <% end %>
+
+    </ul>
+  </div>
+<% else %> <!-- user_signed_in -->
+<div></div>
+<% end %> <!-- user_signed_in -->
+

@@ -16,6 +16,11 @@ gem 'active_model_serializers'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# Bootstrap
+gem 'bootstrap-sass', '~> 3.1.1'
+
+gem 'rails_12factor', group: :production
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -31,7 +36,11 @@ gem 'devise'
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
+  # in order to store env variables securely in development
+  gem 'dotenv-rails'
 end
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 
 # Use ActiveModel has_secure_password
