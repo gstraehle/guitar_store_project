@@ -21,13 +21,13 @@
       </tr>
     <% end %>
     <tr>
-    <td colspan='2'></td>
-    <td><strong>Subtotal: </strong></td>
-    <td class='text-right'><strong><%= number_to_currency @order.total %></strong></td>
+    <td colspan='3'></td>
+    <td class='text-right'><strong>Subtotal: <%= number_to_currency @order.total %></strong></td>
     </tr>
   </tbody>
 </table>
 
+<div class='text-right'>
 <%= form_tag order_charges_path do %>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -36,5 +36,26 @@
           data-amount="<%= @order.total_in_pennies %>"
           data-email="<%= @email%>"></script>
 <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
