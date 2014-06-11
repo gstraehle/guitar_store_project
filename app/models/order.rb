@@ -12,4 +12,14 @@ class Order < ActiveRecord::Base
     self.total * 100
   end
 
+  # Updates processed_at column and sets unit_price on each line item
+  # so future price increases do not impact the order history.
+  def checkout
+    self.processed_at = Time.now
+    self.save
+    self.order_products.each do |order_product|
+      order_product.unit_price = Product.find(order_product.product_id).price
+      order_product.save
+    end
+  end
 end

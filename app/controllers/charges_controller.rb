@@ -21,16 +21,8 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
-    @date = Time.now
     @order = Order.find(params[:order_id])
-    @order.processed_at = @date
-    @order.save
-    @order.order_products.each do |order_product|
-      price = Product.find(order_product.product_id).price
-      order_product.unit_price = price
-      order_product.save
-    end
-
+    @order.checkout
     current_user.setup_cart
 
   rescue Stripe::CardError => e
