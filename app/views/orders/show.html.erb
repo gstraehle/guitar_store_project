@@ -10,11 +10,11 @@
 <table class="table">
   <thead>
     <tr>
-      <th class="cart-header">Description</th>
-      <th class="cart-header">Image</th>
-      <th class="cart-header">Price</th>
-      <th class="cart-header">Quantity</th>
-      <th class="cart-header">Remove</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>Price</th>
+      <th class="text-center">Quantity</th>
+      <th class="text-right">Price</th>
     </tr>
   </thead>
 
@@ -26,8 +26,8 @@
         </td>
         <td class="item-image"><%= image_tag(order_product.product.image) %></td>
         <td class="item-price"><%= number_to_currency(order_product.product.price) %></td>
-        <td class="item-quantity"><%= order_product.quantity %></td>
-        <td class="item-remove">(OrderProduct#destroy)</td>
+        <td class="item-quantity text-center"><%= order_product.quantity %></td>
+        <td class="item-remove text-right">(OrderProduct#destroy)</td>
       </tr>
     <% end %>
   </tbody>
