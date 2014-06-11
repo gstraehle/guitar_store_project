@@ -25,6 +25,12 @@ class ChargesController < ApplicationController
     @order = Order.find(params[:order_id])
     @order.processed_at = @date
     @order.save
+    @order.order_products.each do |order_product|
+      price = Product.find(order_product.product_id).price
+      order_product.unit_price = price
+      order_product.save
+    end
+
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
