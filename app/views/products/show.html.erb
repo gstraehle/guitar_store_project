@@ -3,8 +3,8 @@
 <p id="notice"><%= notice %></p>
 <%= link_to 'Back', products_path %>
 <br>
-<h2>Brand: <%=@product.brand %></h2>
-<h3 id="product-model" data-id='<%= @product.id %>'>Model: <%=@product.model %></h3>
+<h2 id="product-brand"><%=@product.brand %></h2>
+<h3 id="product-model" data-id='<%= @product.id %>'><%=@product.model %></h3>
 <h3>Rating: <%=@product.avg_rating %></h3>
 
 <%= image_tag(@product.image) %>
@@ -12,8 +12,8 @@
 <%= image_tag(@product.alt_image_2) %>
 <%= image_tag(@product.alt_image_3) %>
 
-<h3>MSRP: <%=@product.msrp %></h3>
-<h1>Our price: <%=@product.price %></h1>
+<h3>MSRP: <%= number_to_currency(@product.msrp) %></h3>
+<h1>Our price: <span id="product-price"><%= number_to_currency(@product.price) %></span></h1>
 
 <ul>
   <li>Orientation: <%=@product.orientation %></li>
