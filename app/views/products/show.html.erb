@@ -28,11 +28,12 @@
   <li>Description: <%=@product.description %></li>
 </ul>
 
-<form id='add-to-cart'>
-  <input type='button' value='Add to cart' class='add_to_cart_button' data-in-cart='<%=@in_cart%>'>
-</form>
+<div id='buttons' data='<%=user_signed_in?%>'>
+  <form id='add-to-cart'>
+    <input type='button' value='Add to cart' class='add_to_cart_button' data-in-cart='<%=@in_cart%>'>
+  </form>
 
-<form id='remove-from-cart'>
-  <input type='button' value='Remove from cart' class='remove_from_cart_button' id='<%= @order_product_row %>' data-in-cart='<%=@in_cart%>'>
-</form>
-
+  <form id='remove-from-cart'>
+    <input type='button' value='Remove from cart' class='remove_from_cart_button' id='<%= @order_product_row %>' data-in-cart='<%=@in_cart%>'>
+  </form>
+</div>

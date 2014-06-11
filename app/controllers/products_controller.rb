@@ -10,12 +10,12 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
-    order_products = OrderProduct.all
-    #finds the item numbers of current user's cart
-    @in_cart = current_user.orders.find_by(processed_at: nil).order_products.pluck(:product_id).uniq.include?(@product.id)
-    order_product_row = current_user.orders.find_by(processed_at: nil)[:id]
-    @in_cart ? @order_product_row = order_products.where(order_id: order_product_row).find_by(product_id: @product)[:id] : @order_product_row = 'n/a'
+    if user_signed_in?
+      #finds the item numbers of current user's cart
+      @in_cart = current_user.orders.find_by(processed_at: nil).order_products.pluck(:product_id).uniq.include?(@product.id)
+      cart_id = current_user.orders.find_by(processed_at: nil)[:id]
+      @in_cart ? @order_product_row = OrderProduct.where(order_id: cart_id).find_by(product_id: @product)[:id] : @order_product_row = 'n/a'
+    end
   end
 
   # GET /products/new

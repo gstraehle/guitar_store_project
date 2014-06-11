@@ -11,6 +11,10 @@ $(document).ready(function(){
     $('.add_to_cart_button').hide();
     $('.remove_from_cart_button').show();
     }
+
+    if($('#buttons').attr('data') === 'false'){
+      $('#buttons').hide();
+     }
   });
 
 var StoreApp = StoreApp || {};
