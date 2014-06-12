@@ -22,8 +22,10 @@ $(document).ready(function(){
       $(product_removed).hide('slow');
       var orderTotal = parseInt($('#order-total').text());
       var lostPrice= parseInt($(this).attr('data-price'));
-      var myInteger = orderTotal - lostPrice;
-      $('#order-total').text(myInteger);
+      var newPrice = orderTotal - lostPrice;
+      $('#order-total').text(newPrice);
+      var myInteger = parseInt($('.badge').text()) - 1;
+      $('.badge').text(myInteger);
     }
   });
 });
