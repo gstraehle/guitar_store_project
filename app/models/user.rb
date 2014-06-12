@@ -65,6 +65,4 @@ class User < ActiveRecord::Base
     u
   end
 
-
->>>>>>> Stashed changes
 end
