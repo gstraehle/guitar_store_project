@@ -15,6 +15,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spring', group: :development
 gem 'devise'
 gem 'stripe', github: 'stripe/stripe-ruby'
+gem 'rails_admin'
 
 group :development, :test do
   gem 'pry-rails'
