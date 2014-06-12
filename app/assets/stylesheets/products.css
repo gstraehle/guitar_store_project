@@ -13,10 +13,24 @@
   margin: 0;
   float: left;
 }
-img {
+
+.catalogue-image {
   width: 200px;
+  margin: 25px 0 0 0;
 }
 
 ul {
   list-style: none;
+}
+
+img.thumbnail-image {
+  margin: 0;
+  width: 200px;
+}
+
+img.main-image {
+  display: block;
+  height: 500px;
+  margin: 0;
+  padding: 0;
 }
