@@ -1,40 +1,41 @@
 <h2>Our Guitars</h2>
 
-<% @products.each do |product| %>
-  <div class='summary clearfix' data-category='<%= product.category if (product.category)%>' data-price='<%= product.price if (product.price)  %>'data-rating='<%= product.avg_rating if (product.avg_rating)%>'>
-    <div class='description'>
-      <h3>
-        <%= link_to product do %>
-          <%= product.brand if (product.brand)  %> <%= product.model if (product.model)  %>
-        <% end %>
-      </h3>
-      <ul>
-        <li>
-          Rating:
-          <% if (product.avg_rating) %>
-            <% (product.avg_rating.to_i).times do %>
-              <i class="fa fa-star"></i>
-            <% end %>
-            <% if product.avg_rating % 1 > 0 %>
-              <i class="fa fa-star-half-empty"></i>
-              <% (4 - (product.avg_rating.to_i)).times do %>
-                <i class="fa fa-star-o"></i>
-              <% end %>
-            <% else %>
-              <% (5 - (product.avg_rating.to_i)).times do %>
-                <i class="fa fa-star-o"></i>
-              <% end %>
-            <% end %>
+<div id="products-catalogue">
+  <% @products.each do |product| %>
+    <div class='summary clearfix' data-category='<%= product.category if (product.category)%>' data-price='<%= product.price if (product.price)  %>'data-rating='<%= product.avg_rating if (product.avg_rating)%>'>
+      <div class='description'>
+        <h3>
+          <%= link_to product do %>
+            <%= product.brand if (product.brand)  %> <%= product.model if (product.model)  %>
           <% end %>
-        </li>
-        <li>Category: <%= product.category if (product.category)  %></li>
-        <li>Price: <%= number_to_currency(product.price) if (product.price)  %></li>
-        <li><%= link_to 'See more detail...', product %></li>
-      </ul>
-    </div>
-    <div class='image'>
-      <%= image_tag(product.image) %>
-
+        </h3>
+        <ul>
+          <li>
+            Rating:
+            <% if (product.avg_rating) %>
+              <% (product.avg_rating.to_i).times do %>
+                <i class="fa fa-star"></i>
+              <% end %>
+              <% if product.avg_rating % 1 > 0 %>
+                <i class="fa fa-star-half-empty"></i>
+                <% (4 - (product.avg_rating.to_i)).times do %>
+                  <i class="fa fa-star-o"></i>
+                <% end %>
+              <% else %>
+                <% (5 - (product.avg_rating.to_i)).times do %>
+                  <i class="fa fa-star-o"></i>
+                <% end %>
+              <% end %>
+            <% end %>
+          </li>
+          <li>Category: <%= product.category if (product.category)  %></li>
+          <li>Price: <%= number_to_currency(product.price) if (product.price)  %></li>
+          <li><%= link_to 'See more detail...', product %></li>
+        </ul>
+      </div>
+      <div class='image'>
+        <%= image_tag(product.image) %>
+      </div>
     </div>
   <% end %>
 </div>
