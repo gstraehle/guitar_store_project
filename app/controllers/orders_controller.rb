@@ -4,15 +4,17 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    if user_signed_in?
+      @orders = current_user.orders
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
-
     @order_products = @order.order_products # returns an array
-
   end
 
   # GET /orders/new

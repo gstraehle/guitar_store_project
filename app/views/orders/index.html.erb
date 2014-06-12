@@ -13,7 +13,7 @@
       </thead>
 
       <tbody>
-        <% @orders.each do |order| %>
+        <% current_user.orders.each do |order| %>
           <tr>
             <td><%= order.id %></td>
             <td>
