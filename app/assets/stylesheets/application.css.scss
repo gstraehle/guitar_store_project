@@ -32,6 +32,8 @@ footer {
 
 nav {
   font-size: 18px;
+  border-radius: 4px;
+  background-color: white;
 }
 
 .bg {
@@ -53,13 +55,6 @@ nav {
 
 // Boostrap Overrides
 
-#cart {
-  width: 25%;
-  position: fixed;
-  top: 10px;
-  right: 10px;
-}
-
 .list-group-item {
   position: relative;
   display: block;
@@ -70,14 +65,6 @@ nav {
   border-left: 0;
   border-right: 0;
   border-bottom: 0;
-}
-
-#cart-icon {
-  color: #666;
-  font-size: 18px;
-  margin-right: 12px;
-  margin-top: 2px;
-  cursor: pointer;
 }
 
 .badge {
