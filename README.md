@@ -42,8 +42,10 @@ Instructions for local deployment:
 Setting up Stripe API keys on your local environment:
 - Go to [www.stripe.com](http://www.stripe.com) and create an account
 - Go into your account settings (under Your Account) and click on API Keys.
-- In the project root folder, create a new file named .env
-- - PUBLISHABLE_KEY=[paste your Test Publishable Key here, no quotes needed]
-- - SECRET_KEY=[paste your Test Secret Key here, no quotes needed]
+- In the project root directory, create a new file named .env and add the following lines to it:
+`PUBLISHABLE_KEY=[paste your Test Publishable Key here, no quotes needed]`
+`SECRET_KEY=[paste your Test Secret Key here, no quotes needed]`
+- Open the .gitignore file and add `.env` to it
+- That's it!
 
 Ruby version: 2.1.1p76
