@@ -1,5 +1,7 @@
 <h2>Our Guitars</h2>
-
+<input type='button' class='btn btn-default' value='Sort by price ascending' id='asc-sort'>
+<input type='button' class='btn btn-default' value='Sort by price descending' id='desc-sort'>
+<input type='button' class='btn btn-default' value='Sort by rating' id='rating-sort'>
 <div id="products-catalogue">
   <% @products.each do |product| %>
     <div class='summary clearfix' data-category='<%= product.category if (product.category)%>' data-price='<%= product.price if (product.price)  %>'data-rating='<%= product.avg_rating if (product.avg_rating)%>'>
