@@ -13,7 +13,7 @@
           <div class="panel-body">
           <!-- Order Products, as list elements -->
             <ul class="list-group" id="cart-preview">
-              <% if current_user.orders.find_by(processed_at: nil).order_products.length > 0 %>
+              <% if current_user.orders.find_by(processed_at: nil).order_products.length > 1 %>
                 <% current_user.orders.find_by(processed_at: nil).order_products.each do |order_product| %>
                   <li class="list-group-item" id="product_<%= order_product.id %>">
                       <strong><%= link_to order_product.product do %>
@@ -23,9 +23,20 @@
                     <%= number_to_currency(order_product.product.price) %>
                   </li>
                 <% end %> <!-- order_products.each loop (end) -->
-              <% else %> <!-- is order_products.length > 0? (false) -->
-                <li class="list-group-item">Your cart is empty</li>
-              <% end %> <!-- is order_products.length > 0? (end) -->
+              <% elsif current_user.orders.find_by(processed_at: nil).order_products.length < 1 %> <!-- order_products.length check -->
+                <li class="list-group-item" id="empty-cart" style="display:block;">Your cart is empty</li>
+              <% else %>
+                <li class="list-group-item" id="empty-cart" style="display:none;">Your cart is empty</li>
+                <% current_user.orders.find_by(processed_at: nil).order_products.each do |order_product| %>
+                  <li class="list-group-item" id="product_<%= order_product.id %>">
+                      <strong><%= link_to order_product.product do %>
+                        <%= order_product.product.brand %> <%= order_product.product.model %>
+                      <% end %></strong>
+                    <br>
+                    <%= number_to_currency(order_product.product.price) %>
+                  </li>
+                <% end %> <!-- order_products.each loop (end) -->
+              <% end %> <!-- order_products.length check (end) -->
             </ul>
           </div> <!-- /panel-body -->
         </div> <!-- /collapse-cart -->
