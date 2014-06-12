@@ -7,6 +7,7 @@ $(document).ready(function(){
         type: 'DELETE'
       })
       .done(function(result) {
+        $('#empty-cart').show('slow');
         console.log("success");
       })
       .fail(function() {
