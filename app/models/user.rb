@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -10,6 +8,10 @@ class User < ActiveRecord::Base
 
   def last_open_order
     self.orders.where(processed_at: nil).last
+  end
+
+  def current_cart_items
+    self.orders.find_by(processed_at: nil).order_products
   end
 
   def setup_cart
