@@ -20,8 +20,10 @@ $(document).ready(function(){
 
       var product_removed = "#product_" + this.id;
       $(product_removed).hide('slow');
-      var myInteger = parseInt($('.badge').text()) - 1;
-      $('.badge').text(myInteger);
+      var orderTotal = parseInt($('#order-total').text());
+      var lostPrice= parseInt($(this).attr('data-price'));
+      var myInteger = orderTotal - lostPrice;
+      $('#order-total').text(myInteger);
     }
   });
 });
