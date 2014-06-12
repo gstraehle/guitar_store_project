@@ -8,17 +8,18 @@
 <h3>Rating: <%=@product.avg_rating %></h3>
 
 <div id="links">
-    <a href="<%= image_url(@product.image) %>" data-gallery>
-        <%= image_tag(@product.image) %>
-    </a>
     <a href="<%= image_url(@product.alt_image_1) %>" data-gallery>
-        <%= image_tag(@product.alt_image_1) %>
+        <%= image_tag(@product.alt_image_1, class: 'main-image') %>
     </a>
+    <br>
     <a href="<%= image_url(@product.alt_image_2) %>" data-gallery>
-        <%= image_tag(@product.alt_image_2) %>
+        <%= image_tag(@product.alt_image_2, class: 'thumbnail-image') %>
     </a>
     <a href="<%= image_url(@product.alt_image_3) %>" data-gallery>
-      <%= image_tag(@product.alt_image_3) %>
+        <%= image_tag(@product.alt_image_3, class: 'thumbnail-image') %>
+    </a>
+    <a href="<%= image_url(@product.image) %>" data-gallery>
+      <%= image_tag(@product.image, class: 'thumbnail-image') %>
     </a>
 </div>
 
