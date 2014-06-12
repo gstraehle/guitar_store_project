@@ -2,7 +2,7 @@ class ChargesController < ApplicationController
   def new
     @order = Order.find(params[:order_id])
     @order_products = @order.order_products
-    @email = email_placeholder.to_s
+    @email = current_user.email
 
     if @order.valid_for_checkout? == true
 
@@ -37,10 +37,4 @@ class ChargesController < ApplicationController
     redirect_to charges_path
   end
 
-  private
-    def email_placeholder
-      if user_signed_in?
-        current_user.email
-      end
-    end
 end
