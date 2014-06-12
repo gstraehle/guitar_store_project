@@ -2,7 +2,7 @@ $(document).ready(function(){
   rowID = $('.remove_from_cart_button').attr('id');
   $('#add-to-cart').on('click', '.add_to_cart_button', StoreApp.addProductToCart);
   $('#remove-from-cart').on('click', '.remove_from_cart_button', StoreApp.removeProductToCart);
-
+  $( "#asc-sort" ).click(StoreApp.sortAsc);
   if($('.remove_from_cart_button').attr('id') === 'n/a'){
     $('.add_to_cart_button').show();
     $('.remove_from_cart_button').hide();
@@ -85,3 +85,23 @@ StoreApp.removeProductToCart = function() {
   myInteger = parseInt($('.badge').text()) - 1;
   $('.badge').text(myInteger);
 };
+
+StoreApp.sortAsc = function() {
+  var myArray = $("#products-catalogue .summary");
+  var count = 0;
+  myArray.sort(function (a, b) {
+    a = parseInt($(a).attr('data-price'), 10);
+    b = parseInt($(b).attr('data-price'), 10);
+    count += 2;
+    if(a > b) {
+      return 1;
+    } else if(a < b) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  $("#results").append(myArray);
+};
+
+
