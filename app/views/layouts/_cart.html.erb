@@ -1,33 +1,38 @@
 <% if user_signed_in? %>
   <div id="cart">
-    <ul class="list-group" id="cart-preview">
-      <li class="list-group-item">
+    <div class="panel-group" id="cart-collapsible">
+      <div class="panel panel-default">
+        <div class="panel-heading" data-toggle="collapse" data-target="#collapse-cart">
+          <i id="cart-icon" class="fa fa-chevron-up pull-left"></i>
+          <span class="cart-header">Your Cart</span>
+          <%= link_to "(edit)", order_path(current_user.orders.find_by(processed_at: nil).id) %>
+          <span class="badge pull-right" id="item_number"><%= current_user.orders.find_by(processed_at: nil).order_products.length %></span>
+        </div>
 
-        <% if current_user.orders.find_by(processed_at: nil) == nil %>
-            <strong>Your Cart</strong>
-            <span class="badge" id="item_number">0</span>
-          </li>
+        <div id="collapse-cart" class="panel-collapse collapse in">
+          <div class="panel-body">
+          <!-- Order Products, as list elements -->
+            <ul class="list-group" id="cart-preview">
+              <% if current_user.orders.find_by(processed_at: nil).order_products.length > 0 %>
+                <% current_user.orders.find_by(processed_at: nil).order_products.each do |order_product| %>
+                  <li class="list-group-item" id="product_<%= order_product.id %>">
+                      <strong><%= link_to order_product.product do %>
+                        <%= order_product.product.brand %> <%= order_product.product.model %>
+                      <% end %></strong>
+                    <br>
+                    <%= number_to_currency(order_product.product.price) %>
+                  </li>
+                <% end %> <!-- order_products.each loop (end) -->
+              <% else %> <!-- is order_products.length > 0? (false) -->
+                <li class="list-group-item">Your cart is empty</li>
+              <% end %> <!-- is order_products.length > 0? (end) -->
+            </ul>
+          </div> <!-- /panel-body -->
+        </div> <!-- /collapse-cart -->
 
-        <% else %>
-            <strong><%= link_to "Your Cart", order_path(current_user.orders.find_by(processed_at: nil).id) %></strong>
-            <span class="badge" id="item_number"><%= current_user.orders.find_by(processed_at: nil).order_products.length %></span>
-          </li>
-
-          <% current_user.orders.find_by(processed_at: nil).order_products.each do |order_product| %>
-            <li class="list-group-item" id="product_<%= order_product.id %>">
-              <strong>
-                <%= link_to order_product.product do %>
-                  <%= order_product.product.brand %> <%= order_product.product.model %>
-                <% end %>
-              </strong><br>
-              <%= number_to_currency(order_product.product.price) %>
-            </li>
-          <% end %>
-        <% end %>
-
-    </ul>
-  </div>
-<% else %> <!-- user_signed_in -->
+      </div> <!-- /panel-default -->
+    </div> <!-- /panel-group -->
+  </div> <!-- /cart -->
+<% else %> <!-- user_signed_in (false) -->
 <div></div>
-<% end %> <!-- user_signed_in -->
-
+<% end %> <!-- user_signed_in (end) -->
