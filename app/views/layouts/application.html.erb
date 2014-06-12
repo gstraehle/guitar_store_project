@@ -10,36 +10,54 @@
 
 <%= render 'layouts/cart' %>
 
+<div class="bg"></div>
+<div class="jumbotron">
+  <h1>Fretrograde!</h1>
+  <p class="lead">Guitars so awesome.</p>
+</div>
+
 <div class="container">
-  <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path %> |
-        <%= link_to "Login", new_user_session_path %>
-      <% end %>
   <% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
       <%= content_tag :div, msg, :class => "flash_#{name}" %>
     <% end %>
   <% end %>
 
-  <h1>Fretrograde! <small>Guitars so awesome.</small></h1>
+  <nav class="navbar"  role="navigation">
+    <div class="container-fluid">
+      <ul class="nav nav-pills navbar-nav navbar-left">
+          <li><%= link_to "Products", root_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+          <li><%= link_to "Order History", orders_path %></li>
+        <% end %>
+      </ul>
 
-  <nav>
-    <ul class="nav nav-pills">
-      <li><%= link_to "Home", root_path %></li>
-      <% if user_signed_in? %>
-        <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-        <li><%= link_to "Order History", orders_path %></li>
-      <% end %>
-    </ul>
+      <ul class="nav nav-pills navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><small class="navbar-text">Logged in as <strong><%= current_user.email %></strong></small></li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </div>
   </nav>
 
 
 
   <%= yield %>
 </div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      HAY GUYZ
+    </div>
+  </div>
+</footer>
+
 
 </body>
 </html>

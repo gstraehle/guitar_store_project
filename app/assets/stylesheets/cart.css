@@ -1,3 +1,20 @@
+
+#cart {
+  width: 25%;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+#cart-icon {
+  color: #666;
+  font-size: 18px;
+  margin-right: 12px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
 ul, ol {
   margin-top: 0;
   margin-bottom: 10px;
