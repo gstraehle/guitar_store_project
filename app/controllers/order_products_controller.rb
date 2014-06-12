@@ -26,12 +26,9 @@ class OrderProductsController < ApplicationController
     end
   end
 
-
   def update
     @order_product = Order.find(params[:id]).order_products.where(product_id: params[:order_product][:product_id]).first
-    # @order_product.quantity = params[:order_product][:quantity]
     @order_product.save
-
   end
 
   def destroy
