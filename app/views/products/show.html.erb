@@ -8,16 +8,16 @@
 <h3>Rating: <%=@product.avg_rating %></h3>
 
 <div id="links">
-    <a href="<%= @product.image %>">
+    <a href="<%= @product.image %>" data-gallery>
         <%= image_tag(@product.image) %>
     </a>
-    <a href="<%= @product.alt_image_1 %>">
+    <a href="<%= @product.alt_image_1 %>" data-gallery>
         <%= image_tag(@product.alt_image_1) %>
     </a>
-    <a href="<%= @product.alt_image_2 %>">
+    <a href="<%= @product.alt_image_2 %>" data-gallery>
         <%= image_tag(@product.alt_image_2) %>
     </a>
-    <a href="<%= @product.alt_image_3 %>">
+    <a href="<%= @product.alt_image_3 %>" data-gallery>
       <%= image_tag(@product.alt_image_3) %>
     </a>
 </div>
