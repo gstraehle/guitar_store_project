@@ -20,6 +20,7 @@ product8 = Product.create(quantity: 2, avg_rating: 4.5, brand: 'Fender', alt_ima
 puts('Creating users')
 kathleen = User.create(email: "kathleen@example.com", password: 'password')
 george = User.create(email: "george@example.com", password: 'password')
+admin = User.create(email: 'admin@example.com', password: 'somethingmuchlonger', admin: true)
 
 puts('Clearing automatically generated carts')
 Order.delete_all

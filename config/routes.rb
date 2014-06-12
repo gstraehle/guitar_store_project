@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'products#index'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :orders do
     resources :charges
   end
