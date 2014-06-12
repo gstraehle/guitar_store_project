@@ -1,8 +1,7 @@
 <h2>Our Guitars</h2>
 
-
 <% @products.each do |product| %>
-  <div class='summary clearfix'>
+  <div class='summary clearfix' data-category='<%= product.category if (product.category)%>' data-price='<%= product.price if (product.price)  %>'data-rating='<%= product.avg_rating if (product.avg_rating)%>'>
     <div class='description'>
       <h3>
         <%= link_to product do %>
@@ -35,6 +34,8 @@
     </div>
     <div class='image'>
       <%= image_tag(product.image) %>
+
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
+

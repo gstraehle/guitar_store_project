@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+
+<div id='order-total-box'>
+<h1> Order Total </h1>
+<h1 id='order-total'><%= @order.total.to_f %></h1>
+</div>
 
 <h2>Shopping Cart</h2>
 
@@ -24,7 +28,7 @@
               <td class="item-image"><%= image_tag(order_product.product.image) %></td>
               <td class="item-price"><%= number_to_currency(order_product.product.price) %></td>
               <td class="item-quantity text-center"><%= order_product.quantity %></td>
-              <td class="item-remove text-center"><button type='button' class='remove-item' id='<%= order_product.id%>'>Remove Item</button></td>
+              <td class="item-remove text-center"><button type='button' class='remove-item' id='<%= order_product.id%>' data-price='<%= order_product.product.price%>'>Remove Item</button></td>
             </tr>
           <% end %>
         </tbody>
@@ -40,7 +44,6 @@
     </div>
   </div>
 </div>
-
 
 
 

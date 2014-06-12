@@ -4,17 +4,15 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    if user_signed_in?
-      @orders = current_user.orders.order(id: :desc)
-    else
-      redirect_to new_user_session_path
-    end
+    @orders = Order.all
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+
     @order_products = @order.order_products # returns an array
+
   end
 
   # GET /orders/new
@@ -69,6 +67,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:product_id)
+      params.require(:order).permit(:product_id, :quantity)
     end
 end

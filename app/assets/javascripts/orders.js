@@ -20,6 +20,12 @@ $(document).ready(function(){
 
       var product_removed = "#product_" + this.id;
       $(product_removed).hide('slow');
+      var orderTotal = parseInt($('#order-total').text());
+      var lostPrice= parseInt($(this).attr('data-price'));
+      var newPrice = orderTotal - lostPrice;
+      $('#order-total').text(newPrice);
+      var myInteger = parseInt($('.badge').text()) - 1;
+      $('.badge').text(myInteger);
     }
   });
 });
