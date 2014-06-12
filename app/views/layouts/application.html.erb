@@ -13,8 +13,7 @@
 <div class="container">
   <% if user_signed_in? %>
         Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to "Sign up", new_user_registration_path %> |
         <%= link_to "Login", new_user_session_path %>
@@ -26,6 +25,17 @@
   <% end %>
 
   <h1>Fretrograde! <small>Guitars so awesome.</small></h1>
+
+  <nav>
+    <ul class="nav nav-pills">
+      <li><%= link_to "Home", root_path %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'Edit profile', edit_user_registration_path %></li>
+        <li><%= link_to "Order History", orders_path %></li>
+        <li><a href="#">Messages</a></li>
+      <% end %>
+    </ul>
+  </nav>
 
   <%= yield %>
 </div> <!-- /container -->
