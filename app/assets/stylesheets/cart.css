@@ -66,6 +66,8 @@ thead {
 }
 
 #row_of_buttons {
-  margin-top: 200px;
+  position: relative;
+  top: 10px;
+  height: 0px;
 }
 
