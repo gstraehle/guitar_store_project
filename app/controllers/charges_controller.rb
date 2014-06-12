@@ -4,31 +4,28 @@ class ChargesController < ApplicationController
     @order_products = @order.order_products
     @email = current_user.email
 
-    if @order.valid_for_checkout? == true
-
-    else
+    unless @order.valid_for_checkout?
       flash[:notice] = "Please add at least one item to your cart before proceeding to checkout."
       redirect_to :back
     end
   end
 
   def create
-    # Amount in cents
-    @amount = Order.find(params[:order_id]).total_in_pennies
+    @order = Order.find(params[:order_id])
+    @amount = @order.total_in_pennies
 
     customer = Stripe::Customer.create(
-      :email => 'example@stripe.com',
-      :card  => params[:stripeToken]
+      email: 'example@stripe.com',
+      card:  params[:stripeToken]
     )
 
     charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
+      customer: customer.id,
+      amount: @amount,
+      description: 'Rails Stripe customer',
+      currency: 'usd'
     )
 
-    @order = Order.find(params[:order_id])
     @order.checkout(charge.id)
     current_user.setup_cart
 
