@@ -1,4 +1,13 @@
 class User < ActiveRecord::Base
+STATES = ['AK','AL','AR','AS','AZ','CA','CO','CT','DC','DE','FL','GA','GU','HI','IA','ID',
+
+'IL','IN','KS','KY','LA','MA','MD','ME','MH','MI','MN','MO','MS','MT','NC','ND','NE','NH','NJ','NM','NV','NY',
+
+'OH','OK','OR','PA','PR','PW','RI','SC','SD','TN','TX','UT','VA','VI','VT','WA','WI','WV','WY']
+
+  validates :shipping_state_abr, length: { is: 2,
+  message: "must be %{count} characters" }
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -30,5 +39,4 @@ class User < ActiveRecord::Base
       return 'n/a'
     end
   end
-
 end
