@@ -9,7 +9,7 @@ StoreApp.expandCart = function() {
 };
 
 $(document).ready(function() {
-  $('.collapse').collapse({ toggle: true });
+  $('.collapse').collapse({ toggle: false });
 
   $('#cart-collapsible')
     .on('shown.bs.collapse', StoreApp.collapseCart)
