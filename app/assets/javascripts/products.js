@@ -5,6 +5,7 @@ $(document).ready(function(){
   $( "#asc-sort" ).click(StoreApp.sortAsc);
   $( "#desc-sort" ).click(StoreApp.sortDesc);
   $( "#rating-sort" ).click(StoreApp.sortRating);
+  $('#order-total').currency();
   if($('.remove_from_cart_button').attr('id') === 'n/a'){
     $('.add_to_cart_button').show();
     $('.remove_from_cart_button').hide();
