@@ -36,6 +36,24 @@ p.debugger {
   border: 0;
 }
 
+#cart-icon {
+  color: #666;
+  font-size: 18px;
+  margin-right: 12px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.badge {
+  margin-top: 3px;
+}
+
+.cart-header {
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .list-group-item:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0;

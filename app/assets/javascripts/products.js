@@ -50,6 +50,7 @@ StoreApp.addProductToCart = function() {
     $('#cart-preview').append(StoreApp.cartPreviewItem(RowID));
     var myInteger = parseInt($('.badge').text()) + 1;
     $('.badge').text(myInteger);
+    $('#empty-cart').hide('slow');
     console.log("success");
   })
   .fail(function() {
@@ -72,6 +73,7 @@ StoreApp.removeProductToCart = function() {
     console.log("success");
     var product_removed = "#product_" + RowID;
     $(product_removed).hide('slow');
+    $('#empty-cart').show('slow');
   })
   .fail(function() {
     console.log("error");
