@@ -33,7 +33,6 @@ class OrderProductsController < ApplicationController
 
   def destroy
     @order_product.destroy
-
   end
 
   private
