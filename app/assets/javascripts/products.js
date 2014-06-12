@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  RowID = $('.remove_from_cart_button').attr('id');
+  rowID = $('.remove_from_cart_button').attr('id');
   $('#add-to-cart').on('click', '.add_to_cart_button', StoreApp.addProductToCart);
   $('#remove-from-cart').on('click', '.remove_from_cart_button', StoreApp.removeProductToCart);
 
@@ -19,25 +19,25 @@ $(document).ready(function(){
 var StoreApp = StoreApp || {};
 
 StoreApp.cartPreviewItem = function(order_product_row){
-  var product_id = $('#product-model').attr('data-id');
-  var order_product_id = 'product_' + order_product_row;
-  var list_item = $('<li>', {
-    'class':'list-group-item',
-    'id':order_product_id,
-    'style':'display:block;'
-    });
-  var list_item_brand = $('#product-brand').text();
-  var list_item_model = $('#product-model').text();
-  var list_item_price = $('#product-price').text();
-  var list_item_url = '/products/' + product_id;
-  var list_item_link = '<a href=' + list_item_url + '>' + list_item_brand + ' ' + list_item_model + '</a>';
-  var added_to_cart = list_item.html('<strong>' + list_item_link + '</strong><br/>' + list_item_price);
+  var product_id = $('#product-model').attr('data-id'),
+      order_product_id = 'product_' + order_product_row,
+      list_item = $('<li>', {
+        'class':'list-group-item',
+        'id':order_product_id,
+        'style':'display:block;'
+        }),
+      list_item_brand = $('#product-brand').text(),
+      list_item_model = $('#product-model').text(),
+      list_item_price = $('#product-price').text(),
+      list_item_url = '/products/' + product_id,
+      list_item_link = '<a href=' + list_item_url + '>' + list_item_brand + ' ' + list_item_model + '</a>',
+      added_to_cart = list_item.html('<strong>' + list_item_link + '</strong><br/>' + list_item_price);
   return added_to_cart;
 };
 
 StoreApp.addProductToCart = function() {
-  var product_id = $('#product-model').attr('data-id');
-  var quantity = 1;
+  var product_id = $('#product-model').attr('data-id'),
+      quantity = 1;
   $('.add_to_cart_button').toggle();
   $('.remove_from_cart_button').toggle();
   $.ajax({
@@ -46,9 +46,10 @@ StoreApp.addProductToCart = function() {
     data: {order: {product_id: product_id, quantity: quantity}}
   })
   .done(function(result) {
-    RowID = result[result.length -1]['id'];
-    $('#cart-preview').append(StoreApp.cartPreviewItem(RowID));
-    var myInteger = parseInt($('.badge').text()) + 1;
+    var myInteger;
+    rowID = result[result.length -1]['id'];
+    $('#cart-preview').append(StoreApp.cartPreviewItem(rowID));
+    myInteger = parseInt($('.badge').text()) + 1;
     $('.badge').text(myInteger);
     $('#empty-cart').hide('slow');
     console.log("success");
@@ -62,18 +63,18 @@ StoreApp.addProductToCart = function() {
 };
 
 StoreApp.removeProductToCart = function() {
-
+  var myInteger;
   $('.add_to_cart_button').toggle();
   $('.remove_from_cart_button').toggle();
   $.ajax({
-    url: '/order_products/' + RowID,
+    url: '/order_products/' + rowID,
     type: 'DELETE'
   })
   .done(function(result) {
-    console.log("success");
-    var product_removed = "#product_" + RowID;
+    var product_removed = "#product_" + rowID;
     $(product_removed).hide('slow');
     $('#empty-cart').show('slow');
+    console.log("success");
   })
   .fail(function() {
     console.log("error");
@@ -81,6 +82,6 @@ StoreApp.removeProductToCart = function() {
   .always(function() {
     console.log("complete");
   });
-  var myInteger = parseInt($('.badge').text()) - 1;
+  myInteger = parseInt($('.badge').text()) - 1;
   $('.badge').text(myInteger);
 };
