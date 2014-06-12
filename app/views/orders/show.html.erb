@@ -1,10 +1,5 @@
-
-<div id='order-total-box'>
-<h1> Order Total </h1>
-<h1 id='order-total'><%= @order.total.to_f %></h1>
-</div>
-
 <h2>Shopping Cart</h2>
+<h2 id='order-total'><%= @order.total.to_f %></h2>
 
 <div class='row'>
   <div class='col-md-10 col-md-offset-1'>
@@ -39,7 +34,7 @@
     <div class='col-md-2 col-md-offset-2'>
       <%= link_to 'Continue Shopping', products_path, class: "btn btn-warning" %>
     </div>
-    <div class='col-md-2  col-md-offset-4'>
+    <div class='col-md-2 col-md-offset-4'>
       <%= link_to 'Proceed to Checkout', new_order_charge_path(@order), class: "btn btn-danger" %>
     </div>
   </div>

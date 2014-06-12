@@ -7,6 +7,7 @@ StoreApp.removeItem = function() {
       orderTotal,
       lostPrice,
       newPrice,
+      currency,
       myInteger;
 
   if (confirmation === true) {
@@ -27,13 +28,16 @@ StoreApp.removeItem = function() {
 
     row_selector = "#" + this.id;
     $(row_selector).hide('slow');
-
     product_removed = "#product_" + this.id;
     $(product_removed).hide('slow');
-    orderTotal = parseInt($('#order-total').text());
+
+    currency = $('#order-total').text();
+    orderTotal = Number(currency.replace(/[^0-9\.]+/g,""));
     lostPrice= parseInt($(this).attr('data-price'));
     newPrice = orderTotal - lostPrice;
     $('#order-total').text(newPrice);
+    $('#order-total').currency();
+
     myInteger = parseInt($('.badge').text()) - 1;
     $('.badge').text(myInteger);
   }
