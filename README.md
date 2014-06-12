@@ -19,6 +19,7 @@ Technologies:
 - [Stripe](https://github.com/stripe/stripe-ruby)
 - [Twitter Bootstrap](http://getbootstrap.com/)
 - [rails_admin](https://github.com/sferik/rails_admin)
+- [blueimp Gallery](https://github.com/blueimp/Gallery)
 
 
 Features included in this app:
