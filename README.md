@@ -5,21 +5,21 @@ Project 2 for General Assembly Web Development Immersive Program
 June 13, 2014
 
 Contributors:
-George Straehle
-Amanda McDermott
-Kathleen Votolato
+- George Straehle
+- Amanda McDermott
+- Kathleen Votolato
 
-URL:  http://serene-shore-9429.herokuapp.com/
 
-Description: Fretrograde! is a guitar-store themed shopping cart app that uses Ruby on Rails, Javascript, PostgreSQL,
+Try out [Fretrograde!](http://serene-shore-9429.herokuapp.com/)
 
-Technology used:
-- Ruby on Rails
-- Javascript
-- PostgreSQL
+Description: Fretrograde! is a guitar-store themed shopping cart app that uses Ruby on Rails, Javascript, PostgreSQL, and Stripe payment processing.
+
+Technologies:
 - [jQuery-Currency](https://github.com/gilbitron/jQuery-Currency)
 - [Stripe](https://github.com/stripe/stripe-ruby)
 - [Twitter Bootstrap](http://getbootstrap.com/)
+- [rails_admin](https://github.com/sferik/rails_admin)
+- [blueimp Gallery](https://github.com/blueimp/Gallery)
 
 
 Features included in this app:
@@ -42,8 +42,13 @@ Instructions for local deployment:
 Setting up Stripe API keys on your local environment:
 - Go to [www.stripe.com](http://www.stripe.com) and create an account
 - Go into your account settings (under Your Account) and click on API Keys.
-- In the project root folder, create a new file named .env
-- - PUBLISHABLE_KEY=[paste your Test Publishable Key here, no quotes needed]
-- - SECRET_KEY=[paste your Test Secret Key here, no quotes needed]
+- In the project root directory, create a new file named .env and add the following lines to it:
+
+`PUBLISHABLE_KEY=[paste your Test Publishable Key here]`
+
+`SECRET_KEY=[paste your Test Secret Key here]`
+
+- Open the .gitignore file and add `.env` to it
+- That's it!
 
 Ruby version: 2.1.1p76
