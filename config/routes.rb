@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   end
   resources :products
   resources :order_products
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
 end
