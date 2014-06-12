@@ -16,7 +16,6 @@ StoreApp.removeItem = function() {
       type: 'DELETE'
     })
     .done(function(result) {
-      $('#empty-cart').show('slow');
       console.log("success");
     })
     .fail(function() {
@@ -37,9 +36,11 @@ StoreApp.removeItem = function() {
     newPrice = orderTotal - lostPrice;
     $('#order-total').text(newPrice);
     $('#order-total').currency();
-
     myInteger = parseInt($('.badge').text()) - 1;
     $('.badge').text(myInteger);
+    if (parseInt($('.badge').text()) === 0){
+      $('#empty-cart').show('slow');
+    }
   }
 };
 

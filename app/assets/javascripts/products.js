@@ -54,7 +54,6 @@ StoreApp.addProductToCart = function() {
     $('#cart-preview').append(StoreApp.cartPreviewItem(rowID));
     myInteger = parseInt($('.badge').text()) + 1;
     $('.badge').text(myInteger);
-    $('#empty-cart').hide('slow');
     console.log("success");
   })
   .fail(function() {
@@ -63,6 +62,7 @@ StoreApp.addProductToCart = function() {
   .always(function() {
     console.log("complete");
   });
+  $('#empty-cart').hide('slow');
 };
 
 StoreApp.removeProductToCart = function() {
@@ -76,7 +76,6 @@ StoreApp.removeProductToCart = function() {
   .done(function(result) {
     var product_removed = "#product_" + rowID;
     $(product_removed).hide('slow');
-    $('#empty-cart').show('slow');
     console.log("success");
   })
   .fail(function() {
@@ -87,6 +86,11 @@ StoreApp.removeProductToCart = function() {
   });
   myInteger = parseInt($('.badge').text()) - 1;
   $('.badge').text(myInteger);
+
+  if (parseInt($('.badge').text()) === 0){
+    $('#empty-cart').show('slow');
+  }
+
 };
 
 StoreApp.sortAsc = function() {
