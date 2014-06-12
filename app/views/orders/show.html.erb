@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<div id='order-total-box'>
 <h1> Order Total </h1>
 <h1 id='order-total'><%= @order.total.to_f %></h1>
+</div>
+
 <p>
   Viewing order ID <%= @order.id %> for <%= @order.user.email %>
 </p>
