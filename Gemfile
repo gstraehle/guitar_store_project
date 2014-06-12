@@ -19,6 +19,8 @@ gem 'active_model_serializers'
 # Bootstrap
 gem 'bootstrap-sass', '~> 3.1.1'
 
+gem "font-awesome-rails"
+
 gem 'rails_12factor', group: :production
 
 # Use jquery as the JavaScript library
