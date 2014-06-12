@@ -21,3 +21,59 @@ p.debugger {
   color: gray;
 }
 
+// Boostrap Overrides
+
+#cart {
+  width: 25%;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: white;
+  border-top: 1px solid #ddd;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+#cart-icon {
+  color: #666;
+  font-size: 18px;
+  margin-right: 12px;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.badge {
+  margin-top: 3px;
+}
+
+.cart-header {
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.panel-body {
+  padding: 0;
+}
+
+.panel-group .panel-heading + .panel-collapse .panel-body {
+  border-top: 0;
+}
+
+.list-group {
+  margin-bottom: 0;
+  padding-left: 0;
+}

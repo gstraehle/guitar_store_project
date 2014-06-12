@@ -2,10 +2,11 @@
   <div id="cart">
     <div class="panel-group" id="cart-collapsible">
       <div class="panel panel-default">
-        <div class="panel-heading" data-toggle="collapse" data-target="#collapse-cart">
-          <i id="cart-icon" class="fa fa-chevron-up pull-left"></i>
-          <span class="cart-header">Your Cart</span>
-          <%= link_to "(edit)", order_path(current_user.orders.find_by(processed_at: nil).id) %>
+        <div class="panel-heading">
+          <i id="cart-icon" class="fa fa-chevron-up pull-left" data-toggle="collapse" data-target="#collapse-cart"></i>
+          <%= link_to order_path(current_user.orders.find_by(processed_at: nil).id) do %>
+            <span class="cart-header">Your Cart</span>
+          <% end %>
           <span class="badge pull-right" id="item_number"><%= @current_user_order_products.length %></span>
         </div>
 
