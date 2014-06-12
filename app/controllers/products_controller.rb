@@ -7,10 +7,8 @@ class ProductsController < ApplicationController
 
   def show
     if user_signed_in?
-      #finds the item numbers of current user's cart
-      @in_cart = current_user.orders.find_by(processed_at: nil).order_products.pluck(:product_id).uniq.include?(@product.id)
-      cart_id = current_user.orders.find_by(processed_at: nil)[:id]
-      @in_cart ? @order_product_row = OrderProduct.where(order_id: cart_id).find_by(product_id: @product)[:id] : @order_product_row = 'n/a'
+      @in_cart = current_user.product_in_cart?(@product.id)
+      @order_product_row = current_user.order_product_row(@in_cart, @product)
     end
   end
 
@@ -37,7 +35,6 @@ class ProductsController < ApplicationController
 
   def order_by_price
     @products = Product.all.sort(:price)
-    @products
     redirect_to 'root_path'
   end
 
