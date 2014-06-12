@@ -4,11 +4,32 @@
 <% @products.each do |product| %>
   <div class='summary clearfix'>
     <div class='description'>
-      <h3><%= product.brand if (product.brand)  %> <%= product.model if (product.model)  %></h3>
+      <h3>
+        <%= link_to product do %>
+          <%= product.brand if (product.brand)  %> <%= product.model if (product.model)  %>
+        <% end %>
+      </h3>
       <ul>
-        <li>Average Rating: <%= product.avg_rating if (product.avg_rating)  %></li>
-        <li><%= product.category if (product.category)  %></li>
-        <li><%= product.price if (product.price)  %></li>
+        <li>
+          Rating:
+          <% if (product.avg_rating) %>
+            <% (product.avg_rating.to_i).times do %>
+              <i class="fa fa-star"></i>
+            <% end %>
+            <% if product.avg_rating % 1 > 0 %>
+              <i class="fa fa-star-half-empty"></i>
+              <% (4 - (product.avg_rating.to_i)).times do %>
+                <i class="fa fa-star-o"></i>
+              <% end %>
+            <% else %>
+              <% (5 - (product.avg_rating.to_i)).times do %>
+                <i class="fa fa-star-o"></i>
+              <% end %>
+            <% end %>
+          <% end %>
+        </li>
+        <li>Category: <%= product.category if (product.category)  %></li>
+        <li>Price: <%= number_to_currency(product.price) if (product.price)  %></li>
         <li><%= link_to 'See more detail...', product %></li>
       </ul>
     </div>

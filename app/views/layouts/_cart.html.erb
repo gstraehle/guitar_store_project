@@ -5,12 +5,12 @@
 
         <% if current_user.orders.find_by(processed_at: nil) == nil %>
             <strong>Your Cart</strong>
-            <span class="badge">0</span>
+            <span class="badge" id="item_number">0</span>
           </li>
 
         <% else %>
             <strong><%= link_to "Your Cart", order_path(current_user.orders.find_by(processed_at: nil).id) %></strong>
-            <span class="badge"><%= current_user.orders.find_by(processed_at: nil).order_products.length %></span>
+            <span class="badge" id="item_number"><%= current_user.orders.find_by(processed_at: nil).order_products.length %></span>
           </li>
 
           <% current_user.orders.find_by(processed_at: nil).order_products.each do |order_product| %>
