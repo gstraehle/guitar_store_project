@@ -14,15 +14,3 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
-
-$('.collapse').collapse({
-  toggle: true
-});
-
-$(document).ready(function() {
-  $('#cart-collapsible').on('shown.bs.collapse', function()
-    {$('#cart-icon').removeClass("fa-chevron-down").addClass("fa-chevron-up");
-  }).on('hidden.bs.collapse', function()
-    {$('#cart-icon').removeClass("fa-chevron-up").addClass("fa-chevron-down");
-  });
-});
