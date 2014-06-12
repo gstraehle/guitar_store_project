@@ -14,13 +14,11 @@ Try out [Fretrograde!](http://serene-shore-9429.herokuapp.com/)
 
 Description: Fretrograde! is a guitar-store themed shopping cart app that uses Ruby on Rails, Javascript, PostgreSQL, and Stripe payment processing.
 
-Technology used:
-- Ruby on Rails
-- Javascript
-- PostgreSQL
+Technologies:
 - [jQuery-Currency](https://github.com/gilbitron/jQuery-Currency)
 - [Stripe](https://github.com/stripe/stripe-ruby)
 - [Twitter Bootstrap](http://getbootstrap.com/)
+- [rails_admin](https://github.com/sferik/rails_admin)
 
 
 Features included in this app:
