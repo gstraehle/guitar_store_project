@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
 
     guest_cart = guest_user.order.products.all
     guest_cart.each do |product|
-
+      #some stuff
     end
   end
 
