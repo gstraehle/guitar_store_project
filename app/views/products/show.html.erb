@@ -1,10 +1,9 @@
 
 <h1><%= flash[:message] %></h1>
 <p id="notice"><%= notice %></p>
-<%= link_to 'Back', products_path %>
-<br>
-<h2 id="product-brand"><%=@product.brand %></h2>
-<h3 id="product-model" data-id='<%= @product.id %>'><%=@product.model %></h3>
+
+<h2><span id="product-brand"><%=@product.brand %></span> <span id="product-model" data-id='<%= @product.id %>'><%=@product.model %></span></h2>
+<h3><%=@product.category %></h3>
 <h3>Rating: <%=@product.avg_rating %></h3>
 
 <div id="links">
