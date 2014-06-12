@@ -32,6 +32,7 @@ order2 = Order.create(user: george, processed_at: "2014-06-09 16:30:04", created
 puts('Creating carts')
 cart1 = Order.create(user: kathleen, processed_at: nil, created_at: "2014-06-09 15:54:36", updated_at: "2014-06-09 15:54:36")
 cart2 = Order.create(user: george, processed_at: nil, created_at: "2014-06-09 15:57:40", updated_at: "2014-06-09 15:57:40")
+cart3 = Order.create(user: admin, processed_at: nil)
 
 puts('Creating order products')
 OrderProduct.create(order: order1, product: product1, quantity: 2, unit_price: 2222)
