@@ -3,6 +3,13 @@ class ChargesController < ApplicationController
     @order = Order.find(params[:order_id])
     @order_products = @order.order_products
     @email = email_placeholder.to_s
+
+    if @order.valid_for_checkout? == true
+
+    else
+      flash[:notice] = "Please add at least one item to your cart before proceeding to checkout."
+      redirect_to :back
+    end
   end
 
   def create

@@ -23,4 +23,9 @@ class Order < ActiveRecord::Base
       order_product.save
     end
   end
+
+  def valid_for_checkout?
+    self.order_products.length > 0
+  end
+
 end
