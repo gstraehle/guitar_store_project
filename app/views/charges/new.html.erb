@@ -12,12 +12,12 @@
   <tbody>
     <% @order_products.each do |order_product| %>
     <tr>
-      <td class="description">
+      <td class="item-description">
         <%= link_to order_product.product do %><%= order_product.product.brand %> <%= order_product.product.model %><% end %>
       </td>
       <td class="item-image"><%= image_tag(order_product.product.image) %></td>
-      <td class="quantity text-center"><%= order_product.quantity %></td>
-      <td class="price text-right"><%= number_to_currency(Product.find(order_product.product_id).price) %></td>
+      <td class="item-quantity text-center"><%= order_product.quantity %></td>
+      <td class="item-price text-right"><%= number_to_currency(Product.find(order_product.product_id).price) %></td>
     </tr>
     <% end %>
     <tr>
