@@ -23,6 +23,38 @@ p.debugger {
 #cart {
   width: 25%;
   position: fixed;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: white;
+  border: 0;
+}
+
+.list-group-item:first-child {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.panel-body {
+  padding: 0;
+}
+
+.panel-group .panel-heading + .panel-collapse .panel-body {
+  border-top: 0;
+}
+
+.list-group {
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+ul, ol {
+  margin-top: 0;
+  margin-bottom: 10px;
 }
