@@ -1,4 +1,13 @@
-<h2>Shopping Cart</h2>
+<% if @order.processed_at == nil %>
+  <h2>Shopping Cart</h2>
+<% else %>
+  <h2>Order No. <%= @order.id %>
+  <% if @order.processed_at != nil %>
+    <small>completed <%= @order.processed_at.localtime.strftime("%B %d %Y, at %I:%M %p %Z") %></small>
+  <% end %>
+  </h2>
+<% end %>
+
 <h2 id='order-total'><%= @order.total.to_f %></h2>
 
 <div class='row'>
@@ -10,7 +19,9 @@
             <th colspan='2'>Description</th>
             <th>Price</th>
             <th class="text-center">Quantity</th>
+          <% if @order.processed_at == nil %>
             <th class="text-center">Remove</th>
+          <% end %>
           </tr>
         </thead>
 
@@ -23,7 +34,9 @@
               <td class="item-image"><%= image_tag(order_product.product.image) %></td>
               <td class="item-price"><%= number_to_currency(order_product.product.price) %></td>
               <td class="item-quantity text-center"><%= order_product.quantity %></td>
+            <% if @order.processed_at == nil %>
               <td class="item-remove text-center"><button type='button' class='remove-item btn btn-danger' id='<%= order_product.id%>' data-price='<%= order_product.product.price%>'>Remove Item</button></td>
+            <% end %>
             </tr>
           <% end %>
         </tbody>
@@ -35,7 +48,9 @@
       <%= link_to 'Continue Shopping', products_path, class: "btn btn-warning" %>
     </div>
     <div class='col-md-2 col-md-offset-4'>
-      <%= link_to 'Proceed to Checkout', edit_order_path(@order), class: "btn btn-danger" %>
+      <% if @order.processed_at == nil %>
+        <%= link_to 'Proceed to Checkout', edit_order_path(@order), class: "btn btn-danger" %>
+      <% end %>
     </div>
   </div>
 </div>

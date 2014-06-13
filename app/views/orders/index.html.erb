@@ -20,7 +20,7 @@
               <% if order.processed_at == nil %>
                 Cart (order in progress)
               <% else %>
-                <%= order.processed_at %>
+                <%= order.processed_at.localtime.strftime("%b %d, %Y (%I:%M %p %Z)") %>
               <% end %>
             </td>
             <td class="text-right"><%= order.order_products.length %></td>
