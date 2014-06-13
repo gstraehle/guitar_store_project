@@ -35,3 +35,11 @@ thead {
   top: 10px;
   height: 0px;
 }
+
+td.item-image {
+  max-width: 110px;
+}
+.item-image img {
+  max-width: 100%;
+  height: auto;
+}

@@ -1,6 +1,9 @@
-<h1>Editing order</h1>
+<legend>Confirm Shipping Address</legend>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @order %> |
-<%= link_to 'Back', orders_path %>
+<!-- <%= link_to 'Show', @order %> |
+<%= link_to 'Back', orders_path %> -->
+<div class='col-md-2 col-md-offset-4'>
+      <%= link_to 'Proceed to Checkout', new_order_charge_path(@order), class: "btn btn-danger" %>
+    </div>

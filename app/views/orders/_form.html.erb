@@ -1,4 +1,4 @@
-<%= form_for(@order) do |f| %>
+<%= form_for @order, url: new_order_charge_path(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -10,12 +10,36 @@
       </ul>
     </div>
   <% end %>
+  <div class="form-group">
+    <%= f.label :shipping_to, "Recipient name" %>
+    <%= f.text_field :shipping_to, autofocus: true, class: "form-control input-xxl" %>
+  </div>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+  <div class="form-group">
+  <%= f.label :shipping_address_1, "Address 1" %>
+  <%= f.text_field :shipping_address_1, class: "form-control input-xl" %>
   </div>
-  <div class="actions">
+
+  <div class="form-group">
+  <%= f.label :shipping_address_2, "Address 2" %>
+  <%= f.text_field :shipping_address_2, class: "form-control input-xl" %>
+  </div>
+
+  <div class="form-group"><%= f.label :shipping_city, "City" %>
+  <%= f.text_field :shipping_city, class: "form-control input-xl" %>
+  </div>
+
+  <div class="form-group"><%= f.label :shipping_state_abr, "State" %>
+  <%= f.select :shipping_state_abr, choices = User::STATES.sort, include_blank: true, class: "form-control input-xl" %>
+  </div>
+
+  <div class="form-group"><%= f.label :shipping_zip, "Zip" %>
+  <%= f.text_field :shipping_zip, class: "form-control input-xl" %>
+  </div>
+
+  <!--<div class="actions row_of_buttons">
     <%= f.submit %>
-  </div>
+  </div>-->
 <% end %>
+
+
