@@ -36,6 +36,10 @@ nav {
   background-color: white;
 }
 
+.jumbotron > h1 {
+  font-family: 'Lobster', cursive;
+}
+
 .bg {
   background: url(image_path('lespaul_background.jpg')) no-repeat center center;
   position: fixed;
