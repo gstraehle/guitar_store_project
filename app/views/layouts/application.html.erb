@@ -17,7 +17,8 @@
   <p class="lead">Guitars so awesome.</p>
 </div>
 
-<div class="container">
+<div class="container-fluid">
+
   <% flash.each do |name, msg| %>
     <% if msg.is_a?(String) %>
       <%= content_tag :div, msg, :class => "flash_#{name}" %>
@@ -45,8 +46,9 @@
       </ul>
     </div>
   </nav>
+</div>
 
-
+<div class="container">
 
   <%= yield %>
 </div>
@@ -54,7 +56,7 @@
 <footer>
   <div class="container">
     <div class="row">
-      <p>©Fretrograde</p>
+      <p>©Fretrograde, 2014 until &infin;</p>
     </div>
   </div>
 </footer>
