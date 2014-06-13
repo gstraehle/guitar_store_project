@@ -10,7 +10,7 @@ Contributors:
 - Kathleen Votolato
 
 
-Try out [Fretrograde!](http://serene-shore-9429.herokuapp.com/)
+Try out [Fretrograde!](http://fretrograde.herokuapp.com/)
 
 Description: Fretrograde! is a guitar-store themed shopping cart app that uses Ruby on Rails, Javascript, PostgreSQL, and Stripe payment processing.
 
