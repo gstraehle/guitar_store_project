@@ -14,9 +14,3 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
-
-$(document).ready(function(){
-  if (parseInt($('.badge').text()) !== 0){
-    $('#empty-cart').hide();
-  }
-});

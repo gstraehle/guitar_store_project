@@ -14,4 +14,8 @@ $(document).ready(function() {
   $('#cart-collapsible')
     .on('shown.bs.collapse', StoreApp.collapseCart)
     .on('hidden.bs.collapse', StoreApp.expandCart);
+
+  if (parseInt($('.badge').text()) !== 0){
+    $('#empty-cart').hide();
+  }
 });
