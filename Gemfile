@@ -21,4 +21,15 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-nav'
   gem 'dotenv-rails'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'pry-stack_explorer'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'shoulda-matchers'
 end
